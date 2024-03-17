@@ -1,7 +1,7 @@
-import { Footer } from '@/widget/footer';
+import { HomePage } from '@/pages';
 
 function App() {
-  return <Footer />;
+  return <HomePage />;
 }
 
 export default App;
