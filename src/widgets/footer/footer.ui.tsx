@@ -1,4 +1,4 @@
-import { Container, Wrapper, Navbar } from '@/shared/ui';
+import { Navbar } from '@/shared/ui';
 import css from './footer.module.css';
 
 const menu = [
@@ -10,11 +10,5 @@ const menu = [
 ];
 
 export const Footer: React.FC = () => {
-  return (
-    <Container className={css.footer}>
-      <Wrapper className={`${css.footerWrapper}`}>
-        <Navbar menu={menu} />
-      </Wrapper>
-    </Container>
-  );
+  return <Navbar className={css.footer} menu={menu} />;
 };

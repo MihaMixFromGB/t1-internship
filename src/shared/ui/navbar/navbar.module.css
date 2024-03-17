@@ -1,8 +1,23 @@
 .navbar {
-  display: flex;
+  padding: 3px 0;
+  background-color: var(--bg-color);
+}
+
+.navbar > .navbarWrapper {
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 3px 0;
+}
+
+.navbar_fixed {
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  padding-top: 15px;
+}
+
+.navbar_fixed.scroll {
+  padding-top: 0;
 }
 
 .navbar__menu {
