@@ -1,0 +1,14 @@
+.ourTeam {
+  background-color: var(--bg-color);
+  background-image: url(/images/bg/our_team_decor.svg);
+  background-repeat: no-repeat;
+  background-position: top right;
+}
+
+.ourTeamWrapper {
+  padding: 60px 0 140px;
+}
+
+.ourTeam__title {
+  margin-bottom: 27px;
+}

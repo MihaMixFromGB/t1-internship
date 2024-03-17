@@ -1,0 +1,16 @@
+.collage {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 20px;
+  height: 920px;
+  width: 1180px;
+}
+
+.collage > li {
+  list-style-type: none;
+  flex-grow: 0;
+}
+.collage > li:nth-child(3) {
+  margin-top: 80px;
+}

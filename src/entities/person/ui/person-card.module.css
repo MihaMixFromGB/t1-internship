@@ -1,0 +1,41 @@
+.personCard {
+  position: relative;
+}
+.personCard > img {
+  display: block;
+  border-radius: var(--border-radius);
+}
+
+.info {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(36, 36, 36, 0.51);
+  border-radius: var(--border-radius);
+}
+.personCard:hover > .info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: 1s info;
+  will-change: opacity;
+}
+
+.info__name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+@keyframes info {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
