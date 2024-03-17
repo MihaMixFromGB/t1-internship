@@ -1,7 +1,7 @@
-import { FAQ } from '@/widget/faq';
+import { Footer } from '@/widget/footer';
 
 function App() {
-  return <FAQ />;
+  return <Footer />;
 }
 
 export default App;
