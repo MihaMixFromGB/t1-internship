@@ -1,0 +1,12 @@
+.link {
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.link_primary {
+  color: var(--text-primary);
+}
+
+.link_secondary {
+  color: var(--text-secondary);
+}

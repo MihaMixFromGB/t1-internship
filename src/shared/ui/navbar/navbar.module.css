@@ -1,0 +1,17 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3px 0;
+}
+
+.navbar__menu {
+  display: inline-block;
+}
+
+.navbar__menu > a {
+  padding-right: 36px;
+}
+.navbar__menu > a:last-child {
+  padding-right: 0;
+}

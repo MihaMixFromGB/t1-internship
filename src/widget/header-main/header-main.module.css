@@ -1,0 +1,45 @@
+.mainHeader {
+  height: 528px;
+  background-color: var(--bg-color);
+}
+
+.mainHeaderWrapper {
+  position: relative;
+  padding: 15px 0 60px;
+}
+
+.mainHeader__hr {
+  color: #fff;
+  height: 1px;
+  margin-top: 2px;
+}
+
+.mainHeader__titleWrapper {
+  position: absolute;
+  bottom: 48px;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.mainHeader__title {
+  font-size: 200px;
+  opacity: 0.12;
+}
+
+.mainHeader__contentWrapper {
+  position: absolute;
+  bottom: 93px;
+  z-index: 2;
+}
+
+.mainHeader__description {
+  font-size: 2.25rem;
+  max-width: 580px;
+}
+
+.mainHeader__btn {
+  margin-top: 104px;
+  margin-left: 16px;
+}

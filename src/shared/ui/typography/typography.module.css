@@ -1,0 +1,39 @@
+.text_primary {
+  color: var(--text-primary);
+}
+
+.text_secondary {
+  color: var(--text-secondary);
+}
+
+.text_muted {
+  color: var(--text-muted);
+}
+
+.text_low-muted {
+  color: var(--text-low-muted);
+}
+
+.h1Title {
+  font-weight: 700;
+  font-size: 2.25rem;
+}
+
+.h2Title {
+  font-weight: 700;
+  font-size: 1.875rem;
+}
+
+.h3Title {
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.paragraph {
+  font-weight: 600;
+}
+
+.paragraph_lead {
+  font-weight: 400;
+  font-size: 1.25rem;
+}

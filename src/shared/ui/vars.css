@@ -1,0 +1,15 @@
+:root {
+  --text-primary: #444b58;
+  --text-secondary: #ffffff;
+  --text-muted: #b2b5bb;
+  --text-low-muted: #808080;
+  --btn-background-primary: #f14f4f;
+  --btn-background-secondary: #444b58;
+  --btn-outlined-primary: #dbbba9;
+  --btn-outlined-secondary: #c4c4c4;
+  --btn-outlined-width: 1px;
+  --border-radius: 4px;
+  --bg-color: #484283;
+  --bg-selector: #fff4ee;
+  --wrapper-max-width: 1180px;
+}
