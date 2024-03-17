@@ -1,0 +1,28 @@
+.aboutUs {
+  justify-content: center;
+  height: 580px;
+  background-color: var(--bg-color);
+  background-image: url(/images/bg/about_us_decor.svg);
+  background-repeat: no-repeat;
+  background-size: 310px;
+}
+
+.aboutUsWrapper {
+  flex-direction: row;
+  align-items: center;
+}
+
+.aboutUs__content {
+  width: 388px;
+}
+
+.aboutUs__header {
+  margin-bottom: 10px;
+}
+
+.aboutUs__image {
+  width: 680px;
+  height: 100%;
+  background-image: url(/images/bg/about_us_photo.png);
+  clip-path: polygon(25% 0, 100% 0, 75% 100%, 0 100%);
+}
