@@ -1,0 +1,14 @@
+.filter {
+  width: 280px;
+  height: min-content;
+  padding: 5px 20px 20px;
+  background-color: var(--bg-selector);
+}
+
+.filter__field {
+  margin: 25px 0 2px;
+}
+
+.filter__apply {
+  margin: 32px 0 12px;
+}

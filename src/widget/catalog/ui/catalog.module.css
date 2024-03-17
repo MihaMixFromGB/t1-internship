@@ -1,0 +1,15 @@
+.catalog {
+  padding: 54px 0;
+}
+
+.catalogWrapper {
+  display: flex;
+}
+
+.catalog__header {
+  margin-bottom: 33px;
+}
+
+.catalog__filter {
+  margin-right: 20px;
+}

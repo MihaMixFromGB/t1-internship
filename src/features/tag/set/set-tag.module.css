@@ -1,0 +1,20 @@
+.tag {
+  display: flex;
+  justify-content: center;
+  font-weight: 600;
+  padding: 24px 0;
+  border: none;
+}
+
+/* Hide the browser's default radio */
+.tag input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.active {
+  background-color: var(--btn-outlined-primary);
+}

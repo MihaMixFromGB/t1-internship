@@ -1,7 +1,7 @@
-import { MainHeader } from '@/widget/header-main';
+import { Catalog } from '@/widget/catalog';
 
 function App() {
-  return <MainHeader />;
+  return <Catalog />;
 }
 
 export default App;
