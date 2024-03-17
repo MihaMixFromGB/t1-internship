@@ -1,7 +1,7 @@
-import { OurTeam } from '@/widget/our-team';
+import { FAQ } from '@/widget/faq';
 
 function App() {
-  return <OurTeam />;
+  return <FAQ />;
 }
 
 export default App;
