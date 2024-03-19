@@ -1,5 +1,5 @@
-import { SearchByTitle } from '@/features/product/search';
 import { Catalog } from '@/widgets/catalog';
+import { SearchByTitle } from '@/features/product/search';
 import { Container, Wrapper, Heading } from '@/shared/ui';
 import css from './admin.module.css';
 

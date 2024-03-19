@@ -1,6 +1,6 @@
+import { PropsWithClassName } from '@/shared/config';
 import { Button } from '@/shared/ui';
 import css from './search.module.css';
-import { PropsWithClassName } from '@/shared/config';
 
 export const SearchByTitle: React.FC<PropsWithClassName> = ({ className }) => {
   return (
