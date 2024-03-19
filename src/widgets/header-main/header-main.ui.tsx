@@ -20,7 +20,7 @@ const menu = [
 export const MainHeader: React.FC = () => {
   return (
     <>
-      <Navbar fixed menu={menu} />
+      <Navbar className={css.mainHeader__navbar} fixed menu={menu} />
       <Container className={css.mainHeader}>
         <Wrapper className={`${css.mainHeaderWrapper}`}>
           <hr className={css.mainHeader__hr} />

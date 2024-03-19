@@ -8,6 +8,10 @@
   position: relative;
 }
 
+.mainHeader__navbar {
+  margin-top: 15px;
+}
+
 .mainHeader__hr {
   color: #fff;
   height: 1px;

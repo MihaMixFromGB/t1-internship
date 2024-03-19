@@ -14,7 +14,7 @@ export const Navbar: React.FC<NavbarProps> = ({ fixed, menu, className }) => {
     if (!fixed) return;
 
     function handleScroll() {
-      setScroll(window.scrollY > 50);
+      setScroll(window.scrollY > 30);
     }
 
     window.addEventListener('scroll', handleScroll);
