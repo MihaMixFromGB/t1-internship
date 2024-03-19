@@ -3,4 +3,9 @@
   grid-template-columns: repeat(3, 1fr);
   justify-content: center;
   gap: 10px 20px;
+  width: 100%;
+}
+
+.container_sparse {
+  gap: 10px 26px;
 }

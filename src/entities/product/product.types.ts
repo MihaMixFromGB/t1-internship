@@ -21,4 +21,5 @@ export type ProductCardProps = {
 
 export type ProductListProps = {
   products: ShortInfo[];
+  sparse?: boolean;
 };
