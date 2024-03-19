@@ -43,3 +43,11 @@ a {
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
+
+.input-hidden > input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
