@@ -1,7 +1,6 @@
 import { ShowMore } from '@/features/product';
-import { useProducts } from '@/entities/product';
+import { useProducts, ProductList as Products } from '@/entities/product';
 import css from './product-list.module.css';
-import { Products } from './products';
 
 export const ProductList: React.FC = () => {
   const products = useProducts();

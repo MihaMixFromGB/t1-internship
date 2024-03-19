@@ -18,3 +18,7 @@ export type ShortInfo = Pick<Product, 'id' | 'label' | 'priceInUSD'> & {
 export type ProductCardProps = {
   info: ShortInfo;
 };
+
+export type ProductListProps = {
+  products: ShortInfo[];
+};

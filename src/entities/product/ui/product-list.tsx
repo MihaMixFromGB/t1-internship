@@ -1,8 +1,8 @@
 import { ProductCard } from '@/entities/product';
-import css from './products.module.css';
-import { ProductsProps } from './products.types';
+import { ProductListProps } from '../product.types';
+import css from './product-list.module.css';
 
-export const Products: React.FC<ProductsProps> = ({ products }) => {
+export const ProductList: React.FC<ProductListProps> = ({ products }) => {
   return (
     <div className={css.container}>
       {products.map(item => (
