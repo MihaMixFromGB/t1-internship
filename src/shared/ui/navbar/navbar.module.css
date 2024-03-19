@@ -9,13 +9,10 @@
   align-items: center;
 }
 
-.navbar_fixed {
+.navbar.fixed {
   position: fixed;
   z-index: 100;
   width: 100%;
-}
-
-.navbar_fixed.scroll {
   padding: 3px 0;
   margin: 0;
 }

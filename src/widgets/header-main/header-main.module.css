@@ -1,6 +1,5 @@
 .mainHeader {
-  height: 528px;
-  padding: 64px 0 60px;
+  height: 468px;
   background-color: var(--bg-color);
 }
 
@@ -9,7 +8,7 @@
 }
 
 .mainHeader__navbar {
-  margin-top: 15px;
+  padding-top: 15px;
 }
 
 .mainHeader__hr {

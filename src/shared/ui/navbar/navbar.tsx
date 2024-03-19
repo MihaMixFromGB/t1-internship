@@ -24,8 +24,7 @@ export const Navbar: React.FC<NavbarProps> = ({ fixed, menu, className }) => {
   const classes = clsx(
     css.navbar,
     {
-      [css.navbar_fixed]: fixed,
-      [css.scroll]: isScroll,
+      [css.fixed]: fixed && isScroll,
     },
     className,
   );
