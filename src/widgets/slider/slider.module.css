@@ -1,0 +1,29 @@
+.slider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 520px;
+  --border-width: 3px;
+}
+
+.slider > img {
+  border: none;
+}
+
+.slider__gallery {
+  display: flex;
+  justify-content: center;
+  gap: calc(20px - 2 * var(--border-width));
+  margin-top: calc(20px - var(--border-width));
+}
+
+.slider__gallery__img {
+  display: inline-flex;
+  border: var(--border-width) solid transparent;
+  border-radius: var(--border-radius);
+  box-sizing: content-box;
+}
+
+.slider__gallery__img.active {
+  border: var(--border-width) solid var(--bg-color);
+}
