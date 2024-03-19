@@ -1,9 +1,9 @@
+import { Catalog } from '@/widgets/catalog';
+import { Filter } from '@/widgets/filter';
 import { Container, Wrapper, Heading } from '@/shared/ui';
-import css from './catalog.module.css';
-import { Filter } from './filter';
-import { ProductList } from './product-list';
+import css from './catalog-filter.module.css';
 
-export const Catalog: React.FC = () => {
+export const CatalogWithFilter: React.FC = () => {
   return (
     <Container className={css.catalog}>
       <Wrapper>
@@ -12,7 +12,7 @@ export const Catalog: React.FC = () => {
         </Heading>
         <div className={css.catalogWrapper}>
           <Filter className={css.catalog__filter} />
-          <ProductList />
+          <Catalog />
         </div>
       </Wrapper>
     </Container>

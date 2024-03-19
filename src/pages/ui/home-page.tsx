@@ -1,14 +1,14 @@
 import { AboutUs } from '@/widgets/about-us';
-import { Catalog } from '@/widgets/catalog';
 import { FAQ } from '@/widgets/faq';
 import { Footer } from '@/widgets/footer';
 import { MainHeader } from '@/widgets/header-main';
 import { OurTeam } from '@/widgets/our-team';
 import { Quiz } from '@/widgets/quiz';
+import { CatalogWithFilter } from './catalog-filter';
 
 export const HomePage: React.FC = () => {
   const content = [
-    <Catalog />,
+    <CatalogWithFilter />,
     <AboutUs />,
     <Quiz />,
     <OurTeam />,

@@ -1,9 +1,9 @@
-.productList {
+.catalog {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.productList__btnShow {
+.catalog__btnShow {
   margin-top: 32px;
 }
