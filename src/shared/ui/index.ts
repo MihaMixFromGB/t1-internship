@@ -5,5 +5,6 @@ export { Container } from './container';
 export { Link } from './link';
 export { Logo } from './logo';
 export { Navbar } from './navbar';
+export { Slider } from './slider';
 export { Heading, Paragraph } from './typography';
 export { Wrapper } from './wrapper';
