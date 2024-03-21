@@ -6,8 +6,10 @@
   --border-width: 3px;
 }
 
-.slider > img {
+.slider__thumbnail {
   border: none;
+  object-fit: contain;
+  object-position: center;
 }
 
 .slider__gallery {

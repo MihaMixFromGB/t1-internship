@@ -8,7 +8,12 @@ export const Slider: React.FC<SliderProps> = ({ images }) => {
 
   return (
     <div className={css.slider}>
-      <img src={images[activeIdx]} width={520} />
+      <img
+        className={css.slider__thumbnail}
+        src={images[activeIdx]}
+        width={520}
+        height={460}
+      />
       <div className={css.slider__gallery}>
         {images.map((src, idx) => (
           <GalleryItem
