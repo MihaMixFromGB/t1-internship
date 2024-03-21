@@ -1,6 +1,6 @@
 export type Product = {
   id: string;
-  skuid: number;
+  rating: number;
   label: string;
   images: string[];
   priceInUSD: number;
@@ -22,4 +22,8 @@ export type ProductCardProps = {
 export type ProductListProps = {
   products: ShortInfo[];
   sparse?: boolean;
+};
+
+export type ProductDescriptionProps = {
+  product: Product;
 };

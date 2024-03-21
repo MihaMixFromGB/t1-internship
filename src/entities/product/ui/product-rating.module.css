@@ -1,0 +1,9 @@
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rating__label {
+  margin: 0;
+}
