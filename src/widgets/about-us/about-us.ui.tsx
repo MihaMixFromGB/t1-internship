@@ -1,3 +1,4 @@
+import { anchors } from '@/shared/model';
 import { Container, Wrapper, Heading, Paragraph } from '@/shared/ui';
 import css from './about-us.module.css';
 
@@ -6,7 +7,12 @@ export const AboutUs: React.FC = () => {
     <Container className={css.aboutUs}>
       <Wrapper className={css.aboutUsWrapper}>
         <div className={css.aboutUs__content}>
-          <Heading className={css.aboutUs__header} tag='h2' color='secondary'>
+          <Heading
+            id={anchors.aboutUs}
+            className={css.aboutUs__header}
+            tag='h2'
+            color='secondary'
+          >
             About us
           </Heading>
           <Paragraph color='secondary'>

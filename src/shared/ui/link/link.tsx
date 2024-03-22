@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import { HashLink as RouterLink } from 'react-router-hash-link';
 import css from './link.module.css';
 import { LinkProps } from './types';
 
@@ -16,9 +17,21 @@ export const Link: React.FC<LinkProps> = ({
     className,
   );
 
+  const scrollWithOffset = (el: HTMLElement) => {
+    const yCoordinate = el.getBoundingClientRect().top + window.scrollY;
+    const yOffset = -80;
+    window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' });
+  };
+
   return (
-    <a className={classes} href={href}>
+    <RouterLink
+      className={classes}
+      to={href ?? '#'}
+      scroll={el => {
+        scrollWithOffset(el);
+      }}
+    >
       {children}
-    </a>
+    </RouterLink>
   );
 };

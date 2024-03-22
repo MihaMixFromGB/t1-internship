@@ -6,7 +6,7 @@ export const NavbarMenu: React.FC<Pick<NavbarProps, 'menu'>> = ({ menu }) => {
   return (
     <nav className={css.navbar__menu}>
       {menu.map(item => (
-        <Link key={item.label} href='#'>
+        <Link key={item.label} href={item.href}>
           {item.label}
         </Link>
       ))}

@@ -1,3 +1,4 @@
+import { navigationMenu } from '@/shared/model';
 import {
   Container,
   Wrapper,
@@ -8,19 +9,10 @@ import {
 } from '@/shared/ui';
 import css from './header-main.module.css';
 
-const menu = [
-  { label: 'Catalog' },
-  { label: 'About us' },
-  { label: 'Product selection' },
-  { label: 'Our team' },
-  { label: 'FAQ' },
-  { label: 'For staff' },
-];
-
 export const MainHeader: React.FC = () => {
   return (
     <>
-      <Navbar className={css.mainHeader__navbar} fixed menu={menu} />
+      <Navbar className={css.mainHeader__navbar} fixed menu={navigationMenu} />
       <Container className={css.mainHeader}>
         <Wrapper className={`${css.mainHeaderWrapper}`}>
           <hr className={css.mainHeader__hr} />

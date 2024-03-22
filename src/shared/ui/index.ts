@@ -8,3 +8,5 @@ export { Navbar } from './navbar';
 export { Slider } from './slider';
 export { Heading, Paragraph } from './typography';
 export { Wrapper } from './wrapper';
+
+export type { MenuItem } from './navbar';
