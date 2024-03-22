@@ -9,4 +9,5 @@ export { Slider } from './slider';
 export { Heading, Paragraph } from './typography';
 export { Wrapper } from './wrapper';
 
+export type { ButtonProps } from './button';
 export type { MenuItem } from './navbar';

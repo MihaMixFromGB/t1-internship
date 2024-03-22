@@ -1,6 +1,7 @@
 .tags {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(117px, 1fr));
+  min-width: 240px;
   padding: 1px;
   gap: 1px;
   background-color: var(--btn-outlined-primary);

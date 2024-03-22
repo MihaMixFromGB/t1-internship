@@ -4,18 +4,18 @@ import css from './product-card.module.css';
 
 export const ProductCard: React.FC<ProductCardProps> = ({ info }) => {
   return (
-    <article aria-label={`${info.label}. Price ${info.priceInUSD} USD`}>
+    <article aria-label={`${info.title}. Price ${info.price} USD`}>
       <img
         className={css.product__img}
-        src={info.image}
+        src={info.thumbnail}
         alt=''
         aria-hidden={true}
       />
       <Paragraph className={css.product__label} aria-hidden={true}>
-        {info.label}
+        {info.title}
       </Paragraph>
       <Paragraph lead aria-hidden={true}>
-        {info.priceInUSD}$
+        {info.price}$
       </Paragraph>
     </article>
   );

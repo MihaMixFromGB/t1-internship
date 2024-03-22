@@ -1,8 +1,7 @@
-import { Button } from '@/shared/ui';
+import { Button, ButtonProps } from '@/shared/ui';
 import css from './reset-tags.module.css';
-import { ResetTagsProps } from './reset.tags.types';
 
-export const ResetTags: React.FC<ResetTagsProps> = ({ onClick }) => {
+export const ResetTags: React.FC<ButtonProps> = ({ onClick }) => {
   return (
     <Button
       className={css.btn}

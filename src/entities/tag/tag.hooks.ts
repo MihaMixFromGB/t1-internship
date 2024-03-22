@@ -1,6 +1,6 @@
-import { tags } from '@/shared/api';
-import { Tag } from './tag.types';
+import { useGetCategoriesQuery } from './tag.api';
 
-export const useTags = (): Tag[] => {
-  return tags;
+export const useCategories = (): string[] => {
+  const { data } = useGetCategoriesQuery();
+  return data ?? [];
 };

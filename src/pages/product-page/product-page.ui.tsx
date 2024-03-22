@@ -7,7 +7,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({ product }) => {
   return (
     <Container className={css.product}>
       <Wrapper>
-        <Heading tag='h2'>{product.label}</Heading>
+        <Heading tag='h2'>{product.title}</Heading>
         <div className={css.product__content}>
           <Slider images={product.images} />
           <ProductDescription product={product} />

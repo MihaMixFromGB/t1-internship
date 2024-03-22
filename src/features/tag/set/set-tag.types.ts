@@ -1,7 +1,5 @@
-import type { Tag } from '@/entities/tag';
-
 export type SetTagProps = {
-  tag: Tag;
+  tag: string;
   active: boolean;
-  toggle: (tag: Tag['label']) => void;
+  toggle: (tag: string) => void;
 };

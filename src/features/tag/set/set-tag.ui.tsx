@@ -9,14 +9,14 @@ export const SetTag: React.FC<SetTagProps> = ({ tag, active, toggle }) => {
 
   return (
     <label className={classes}>
-      {tag.label}
+      {tag}
       <input
         type='radio'
-        id={`filter-${tag.label}`}
+        id={`filter-${tag}`}
         name='filter'
-        value={tag.label}
+        value={tag}
         checked={active}
-        onChange={() => toggle(tag.label)}
+        onChange={() => toggle(tag)}
       />
     </label>
   );

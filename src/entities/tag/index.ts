@@ -1,3 +1,1 @@
-export { useTags } from './tag.hooks';
-
-export type { Tag } from './tag.types';
+export { useCategories } from './tag.hooks';

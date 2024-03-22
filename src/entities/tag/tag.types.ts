@@ -1,12 +1,8 @@
-export type Tag = {
-  label: string;
-};
-
 export type TagProps = {
-  tag: Tag;
+  tag: string;
   active?: boolean;
 };
 
 export type TagsProps = {
-  tags: Tag[];
+  tags: string[];
 };

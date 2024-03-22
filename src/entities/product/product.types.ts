@@ -1,18 +1,36 @@
 export type Product = {
-  id: string;
+  id: number;
+  skuid: number;
+  title: string;
+  description: string;
+  price: number;
+  discountPercentage: number;
   rating: number;
-  label: string;
-  images: string[];
-  priceInUSD: number;
-  discountInPercent: number;
   stock: number;
   brand: string;
   category: string;
-  description: string;
+  thumbnail: string;
+  images: string[];
 };
 
-export type ShortInfo = Pick<Product, 'id' | 'label' | 'priceInUSD'> & {
-  image: string;
+export type ShortInfo = Pick<Product, 'id' | 'title' | 'price' | 'thumbnail'>;
+
+type BaseProductsRequest = {
+  skip: number;
+};
+export type GetProductsRequest = BaseProductsRequest;
+export type GetProductsByCategoryRequest = BaseProductsRequest & {
+  category: Product['category'];
+};
+export type SearchProductsRequest = BaseProductsRequest & {
+  search: string;
+};
+
+export type ProductsResponse = {
+  products: ShortInfo[];
+  total: number;
+  skip: number;
+  limit: number;
 };
 
 export type ProductCardProps = {

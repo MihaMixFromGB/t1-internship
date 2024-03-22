@@ -8,30 +8,30 @@ export const ProductDescription: React.FC<ProductDescriptionProps> = ({
 }) => {
   const {
     id,
-    label,
+    title,
     rating,
-    priceInUSD,
-    discountInPercent,
+    price,
+    discountPercentage,
     stock,
     brand,
     category,
     description,
   } = product;
 
-  const discountPrice = (priceInUSD * discountInPercent) / 100;
+  const discountPrice = (price * discountPercentage) / 100;
 
   return (
     <div className={css.product}>
       <div className={css.product__header}>
-        <Heading tag='h3'>{label}</Heading>
+        <Heading tag='h3'>{title}</Heading>
         <ProductProp name='SKUID' value={String(id).padStart(4, '0')} />
       </div>
       <div className={css.product__props}>
         <ProductRating value={rating} />
-        <ProductProp name='Base price' value={`${priceInUSD}$`} />
+        <ProductProp name='Base price' value={`${price}$`} />
         <ProductProp
           name='Discount percentage'
-          value={`${discountInPercent}%`}
+          value={`${discountPercentage}%`}
         />
         <ProductProp name='Discount price' value={`${discountPrice}$`} />
         <ProductProp name='Stock' value={stock} />

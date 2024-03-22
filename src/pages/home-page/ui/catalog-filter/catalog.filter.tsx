@@ -1,10 +1,14 @@
-import { Catalog } from '@/widgets/catalog';
+import { Catalog, reset } from '@/widgets/catalog';
 import { Filter } from '@/widgets/filter';
+import { useAppDispatch } from '@/shared/lib';
 import { anchors } from '@/shared/model';
 import { Container, Wrapper, Heading } from '@/shared/ui';
 import css from './catalog-filter.module.css';
 
 export const CatalogWithFilter: React.FC = () => {
+  const dispatch = useAppDispatch();
+  const resetCatalog = () => dispatch(reset());
+
   return (
     <Container className={css.catalog}>
       <Wrapper>
@@ -12,7 +16,7 @@ export const CatalogWithFilter: React.FC = () => {
           Catalog
         </Heading>
         <div className={css.catalogWrapper}>
-          <Filter className={css.catalog__filter} />
+          <Filter className={css.catalog__filter} resetCatalog={resetCatalog} />
           <Catalog />
         </div>
       </Wrapper>
