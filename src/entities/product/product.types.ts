@@ -13,7 +13,10 @@ export type Product = {
   images: string[];
 };
 
-export type ShortInfo = Pick<Product, 'id' | 'title' | 'price' | 'thumbnail'>;
+export type ShortInfo = Pick<
+  Product,
+  'id' | 'title' | 'price' | 'thumbnail' | 'category'
+>;
 
 type BaseProductsRequest = {
   skip: number;

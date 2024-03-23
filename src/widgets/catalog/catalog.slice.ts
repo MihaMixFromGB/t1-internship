@@ -1,40 +1,76 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ShortInfo, ProductsResponse } from '@/entities/product';
+import {
+  createSlice,
+  createEntityAdapter,
+  isAnyOf,
+  createSelector,
+} from '@reduxjs/toolkit';
+import {
+  ShortInfo,
+  getProducts,
+  getProductsByCategory,
+  searchProducts,
+} from '@/entities/product';
+import { api } from '@/shared/config';
 
-type CatalogState = {
-  products: ShortInfo[];
-  skip: number;
-  hasMore: boolean;
-};
-
-const initialState: CatalogState = {
-  products: [],
+const catalogAdapter = createEntityAdapter<ShortInfo>();
+const initialState = catalogAdapter.getInitialState({
   skip: 0,
-  hasMore: false,
-};
+  hasMore: true,
+});
 
 export const catalogSlice = createSlice({
   name: 'catalog',
   initialState,
   reducers: {
-    add: (state, action: PayloadAction<ProductsResponse>) => {
-      const {
-        payload: { products, total, skip, limit },
-      } = action;
-
-      if (state.skip === 0) {
-        state.products = products;
-      } else {
-        state.products = [...state.products, ...products];
-      }
-
-      state.hasMore = skip + limit < total;
+    reset: state => {
+      state.skip = initialState.skip;
+      state.hasMore = initialState.hasMore;
     },
-    reset: () => ({ ...initialState }),
     showMore: state => {
       state.skip += 9;
     },
   },
+  extraReducers: builder => {
+    builder.addMatcher(
+      isAnyOf(
+        getProducts.matchFulfilled,
+        getProductsByCategory.matchFulfilled,
+        searchProducts.matchFulfilled,
+      ),
+      (state, action) => {
+        const { products, total, limit, skip } = action.payload;
+        catalogAdapter.upsertMany(state, products);
+        state.hasMore = limit + skip < total;
+      },
+    );
+  },
 });
 
-export const { add, reset, showMore } = catalogSlice.actions;
+export const { selectAll } = catalogAdapter.getSelectors();
+type Nullable<T> = T | null;
+export const selectProducts = createSelector(
+  [
+    (state: RootState) => selectAll(state.catalog),
+    (state: RootState) => state.catalog.skip,
+    (_state: RootState, category: Nullable<ShortInfo['category']>) => category,
+    (
+      _state: RootState,
+      _category: Nullable<ShortInfo['category']>,
+      search: Nullable<string>,
+    ) => search,
+  ],
+  (products, skip, category, search) => {
+    const limit = api.products.limit;
+
+    if (category) {
+      products = products.filter(p => p.category === category);
+    }
+    if (search) {
+      products = products.filter(p => !!p.title.match(search));
+    }
+
+    return products.slice(0, skip + limit);
+  },
+);
+
+export const { reset, showMore } = catalogSlice.actions;
