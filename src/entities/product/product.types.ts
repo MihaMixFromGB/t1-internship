@@ -13,10 +13,14 @@ export type Product = {
   images: string[];
 };
 
-export type ShortInfo = Pick<
+export type ApiShortInfo = Pick<
   Product,
   'id' | 'title' | 'price' | 'thumbnail' | 'category'
 >;
+
+export type ShortInfo = ApiShortInfo & {
+  searchTag?: SearchProductsRequest['search'];
+};
 
 type BaseProductsRequest = {
   skip: number;
@@ -29,11 +33,15 @@ export type SearchProductsRequest = BaseProductsRequest & {
   search: string;
 };
 
-export type ProductsResponse = {
-  products: ShortInfo[];
+export type ApiProductsResponse = {
+  products: ApiShortInfo[];
   total: number;
   skip: number;
   limit: number;
+};
+
+export type ProductsResponse = Omit<ApiProductsResponse, 'products'> & {
+  products: ShortInfo[];
 };
 
 export type ProductCardProps = {

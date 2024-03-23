@@ -1,5 +1,6 @@
 import { baseProductsApi } from '@/shared/api';
 import { api } from '@/shared/config';
+import { transformSearchProductsResponse } from './product.lib';
 import {
   Product,
   GetProductsRequest,
@@ -38,8 +39,9 @@ export const productsApi = baseProductsApi.injectEndpoints({
     }),
     searchProducts: builder.query<ProductsResponse, SearchProductsRequest>({
       query: ({ search, skip }) => ({
-        url: `/search?q=${search}${getBaseParamsForProductsQuery(skip)}`,
+        url: `/search?q=${search}&${getBaseParamsForProductsQuery(skip)}`,
       }),
+      transformResponse: transformSearchProductsResponse,
     }),
   }),
 });

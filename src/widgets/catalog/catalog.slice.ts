@@ -11,6 +11,7 @@ import {
   searchProducts,
 } from '@/entities/product';
 import { api } from '@/shared/config';
+import { Nullable } from '@/shared/model';
 
 const catalogAdapter = createEntityAdapter<ShortInfo>();
 const initialState = catalogAdapter.getInitialState({
@@ -47,7 +48,6 @@ export const catalogSlice = createSlice({
 });
 
 export const { selectAll } = catalogAdapter.getSelectors();
-type Nullable<T> = T | null;
 export const selectProducts = createSelector(
   [
     (state: RootState) => selectAll(state.catalog),
@@ -66,7 +66,9 @@ export const selectProducts = createSelector(
       products = products.filter(p => p.category === category);
     }
     if (search) {
-      products = products.filter(p => !!p.title.match(search));
+      products = products.filter(
+        p => !!p.searchTag?.toLowerCase().match(search.toLowerCase()),
+      );
     }
 
     return products.slice(0, skip + limit);

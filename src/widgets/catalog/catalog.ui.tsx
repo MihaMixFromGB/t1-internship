@@ -2,12 +2,13 @@ import clsx from 'clsx';
 import { ShowMore } from '@/features/product';
 import { ProductList } from '@/entities/product';
 import { useAppDispatch } from '@/shared/lib';
-import { useCatalog } from './catalog.hooks';
+import { useCatalog, useResetCatalog } from './catalog.hooks';
 import css from './catalog.module.css';
 import { showMore } from './catalog.slice';
 import { CatalogProps } from './catalog.types';
 
 export const Catalog: React.FC<CatalogProps> = ({ className, sparse }) => {
+  useResetCatalog();
   const { products, hasMore } = useCatalog();
 
   const dispatch = useAppDispatch();

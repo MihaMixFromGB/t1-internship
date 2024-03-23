@@ -2,13 +2,12 @@ import clsx from 'clsx';
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { ApplyTags, ResetTags } from '@/features/tag';
-import { anchors } from '@/shared/model';
+import { anchors, PropsWithClassName } from '@/shared/model';
 import { Heading, Paragraph } from '@/shared/ui';
-import { FilterProps } from '../filter.types';
 import css from './filter.module.css';
 import { TagList } from './tag-list';
 
-export const Filter: React.FC<FilterProps> = ({ className, resetCatalog }) => {
+export const Filter: React.FC<PropsWithClassName> = ({ className }) => {
   const [current, setCurrent] = useState<string>();
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -27,7 +26,6 @@ export const Filter: React.FC<FilterProps> = ({ className, resetCatalog }) => {
 
   const apply = () => {
     if (!current) return;
-    resetCatalog();
     setSearchParams(prev => {
       prev.set('category', current);
       return prev;
@@ -36,7 +34,6 @@ export const Filter: React.FC<FilterProps> = ({ className, resetCatalog }) => {
 
   const reset = () => {
     if (!current) return;
-    resetCatalog();
     setSearchParams(prev => {
       prev.delete('category');
       return prev;
