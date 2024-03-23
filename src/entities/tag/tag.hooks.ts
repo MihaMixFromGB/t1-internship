@@ -1,4 +1,4 @@
-import { useGetCategoriesQuery } from './tag.api';
+import { useGetCategoriesQuery } from '@/shared/api';
 
 export const useCategories = (): string[] => {
   const { data } = useGetCategoriesQuery();

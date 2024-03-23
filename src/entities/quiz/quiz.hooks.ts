@@ -1,6 +1,5 @@
-import { quiz } from '@/shared/api';
-import { Quiz } from './quiz.types';
+import { useAppSelector } from '@/shared/lib';
 
-export const useQuiz = (): Quiz => {
-  return quiz;
+export const useQuiz = () => {
+  return useAppSelector(state => state.quiz.category);
 };
