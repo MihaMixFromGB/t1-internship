@@ -1,6 +1,8 @@
 .navbar {
-  padding: 3px 0;
+  padding-top: var(--navbar-padding);
+  padding-bottom: var(--navbar-padding);
   background-color: var(--bg-color);
+  --navbar-padding: 3px;
 }
 
 .navbar > .navbarWrapper {
@@ -13,7 +15,8 @@
   position: fixed;
   z-index: 100;
   width: 100%;
-  padding: 3px 0;
+  padding-top: var(--navbar-padding);
+  padding-bottom: var(--navbar-padding);
   margin: 0;
 }
 

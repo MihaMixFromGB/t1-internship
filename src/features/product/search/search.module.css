@@ -1,6 +1,6 @@
 .search {
   display: flex;
-  height: 60px;
+  gap: 20px;
 }
 
 .search__input {
@@ -17,5 +17,14 @@
 
 .search__btn {
   padding: 18px 47px;
-  margin-left: 20px;
+}
+
+@media only screen and (max-width: 576px) {
+  .search {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .search__btn {
+    width: 100%;
+  }
 }
