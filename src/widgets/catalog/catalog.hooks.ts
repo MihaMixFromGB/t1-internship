@@ -7,7 +7,8 @@ import {
   useSearchProductsQuery,
 } from '@/entities/product';
 import { useAppDispatch, useAppSelector } from '@/shared/lib';
-import { reset, selectProducts } from './catalog.slice';
+import { hasMoreProducts } from './catalog.lib';
+import { reset, selectProducts, toggleHasMore } from './catalog.slice';
 
 export const useResetCatalog = () => {
   const { category, search } = useCatalogParams();
@@ -19,8 +20,7 @@ export const useResetCatalog = () => {
 };
 
 export const useCatalog = () => {
-  const { skip, hasMore } = useAppSelector(store => store.catalog);
-  const { category, search } = useCatalogParams();
+  const { category, search, skip, hasMore } = useCatalogParams();
 
   useProductsQuery(skip);
   const products = useAppSelector(store =>
@@ -30,24 +30,45 @@ export const useCatalog = () => {
   return { products, hasMore };
 };
 
-const useCatalogParams = () => {
+export const useCatalogParams = () => {
+  const { skip, hasMore } = useAppSelector(store => store.catalog);
+
   const [searchParams] = useSearchParams();
   const category = searchParams.get('category');
   const search = searchParams.get('search');
 
-  return { category, search };
+  return { category, search, skip, hasMore };
 };
 
 const useProductsQuery = (skip: number): void => {
-  const { category, search } = useCatalogParams();
+  const { category, search, hasMore } = useCatalogParams();
 
   const skipAll = !!category || !!search;
   const skipByCategory = !category || !!search;
   const skipBySearch = !search || !!category;
 
-  useGetProductsQuery({ skip }, { skip: skipAll });
-  useGetProductsByCategoryQuery(
+  const { data } = useGetProductsQuery({ skip }, { skip: skipAll });
+  const { data: dataByCategory } = useGetProductsByCategoryQuery(
     skipByCategory ? skipToken : { skip, category },
   );
-  useSearchProductsQuery(skipBySearch ? skipToken : { skip, search });
+  const { data: dataBySearch } = useSearchProductsQuery(
+    skipBySearch ? skipToken : { skip, search },
+  );
+
+  /**
+   * Sync data between the RTK Query cache and the Redux store
+   */
+  let hasMoreCached = hasMore;
+  if (!skipAll && data) {
+    hasMoreCached = hasMoreProducts(data);
+  } else if (!skipByCategory && dataByCategory) {
+    hasMoreCached = hasMoreProducts(dataByCategory);
+  } else if (!skipBySearch && dataBySearch) {
+    hasMoreCached = hasMoreProducts(dataBySearch);
+  }
+
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    if (hasMore !== hasMoreCached) dispatch(toggleHasMore());
+  }, [dispatch, hasMore, hasMoreCached]);
 };

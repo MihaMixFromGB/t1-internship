@@ -12,6 +12,7 @@ import {
 } from '@/entities/product';
 import { api } from '@/shared/config';
 import { Nullable } from '@/shared/model';
+import { hasMoreProducts } from './catalog.lib';
 
 const catalogAdapter = createEntityAdapter<ShortInfo>();
 const initialState = catalogAdapter.getInitialState({
@@ -25,10 +26,12 @@ export const catalogSlice = createSlice({
   reducers: {
     reset: state => {
       state.skip = initialState.skip;
-      state.hasMore = initialState.hasMore;
     },
     showMore: state => {
       state.skip += 9;
+    },
+    toggleHasMore: state => {
+      state.hasMore = !state.hasMore;
     },
   },
   extraReducers: builder => {
@@ -39,9 +42,9 @@ export const catalogSlice = createSlice({
         searchProducts.matchFulfilled,
       ),
       (state, action) => {
-        const { products, total, limit, skip } = action.payload;
+        const { products } = action.payload;
         catalogAdapter.upsertMany(state, products);
-        state.hasMore = limit + skip < total;
+        state.hasMore = hasMoreProducts(action.payload);
       },
     );
   },
@@ -75,4 +78,4 @@ export const selectProducts = createSelector(
   },
 );
 
-export const { reset, showMore } = catalogSlice.actions;
+export const { reset, showMore, toggleHasMore } = catalogSlice.actions;
