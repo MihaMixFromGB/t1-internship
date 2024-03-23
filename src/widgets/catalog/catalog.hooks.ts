@@ -20,24 +20,24 @@ export const useResetCatalog = () => {
 };
 
 export const useCatalog = () => {
-  const { category, search, skip, hasMore } = useCatalogParams();
+  const { category, search, skip, hasMore, isFetching } = useCatalogParams();
 
   useProductsQuery(skip);
   const products = useAppSelector(store =>
     selectProducts(store, category, search),
   );
 
-  return { products, hasMore };
+  return { products, hasMore, isFetching };
 };
 
 export const useCatalogParams = () => {
-  const { skip, hasMore } = useAppSelector(store => store.catalog);
+  const { skip, hasMore, isFetching } = useAppSelector(store => store.catalog);
 
   const [searchParams] = useSearchParams();
   const category = searchParams.get('category');
   const search = searchParams.get('search');
 
-  return { category, search, skip, hasMore };
+  return { category, search, skip, hasMore, isFetching };
 };
 
 const useProductsQuery = (skip: number): void => {

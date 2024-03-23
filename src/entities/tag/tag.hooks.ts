@@ -1,6 +1,10 @@
 import { useGetCategoriesQuery } from '@/shared/api';
 
-export const useCategories = (): string[] => {
-  const { data } = useGetCategoriesQuery();
-  return data ?? [];
+type UseCategoriesResponse = {
+  data: string[];
+  isFetching: boolean;
+};
+export const useCategories = (): UseCategoriesResponse => {
+  const { data, isFetching } = useGetCategoriesQuery();
+  return { data: data ?? [], isFetching };
 };

@@ -18,6 +18,7 @@ const catalogAdapter = createEntityAdapter<ShortInfo>();
 const initialState = catalogAdapter.getInitialState({
   skip: 0,
   hasMore: true,
+  isFetching: false,
 });
 
 export const catalogSlice = createSlice({
@@ -35,18 +36,40 @@ export const catalogSlice = createSlice({
     },
   },
   extraReducers: builder => {
-    builder.addMatcher(
-      isAnyOf(
-        getProducts.matchFulfilled,
-        getProductsByCategory.matchFulfilled,
-        searchProducts.matchFulfilled,
-      ),
-      (state, action) => {
-        const { products } = action.payload;
-        catalogAdapter.upsertMany(state, products);
-        state.hasMore = hasMoreProducts(action.payload);
-      },
-    );
+    builder
+      .addMatcher(
+        isAnyOf(
+          getProducts.matchPending,
+          getProductsByCategory.matchPending,
+          searchProducts.matchPending,
+        ),
+        state => {
+          state.isFetching = true;
+        },
+      )
+      .addMatcher(
+        isAnyOf(
+          getProducts.matchFulfilled,
+          getProductsByCategory.matchFulfilled,
+          searchProducts.matchFulfilled,
+        ),
+        (state, action) => {
+          const { products } = action.payload;
+          catalogAdapter.upsertMany(state, products);
+          state.hasMore = hasMoreProducts(action.payload);
+          state.isFetching = false;
+        },
+      )
+      .addMatcher(
+        isAnyOf(
+          getProducts.matchRejected,
+          getProductsByCategory.matchRejected,
+          searchProducts.matchRejected,
+        ),
+        state => {
+          state.isFetching = false;
+        },
+      );
   },
 });
 
