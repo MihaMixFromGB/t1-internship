@@ -18,7 +18,7 @@ export const ProductDescription: React.FC<ProductDescriptionProps> = ({
     description,
   } = product;
 
-  const discountPrice = (price * discountPercentage) / 100;
+  const discountPrice = Math.ceil(price * (1 - discountPercentage / 100));
 
   return (
     <div className={css.product}>
