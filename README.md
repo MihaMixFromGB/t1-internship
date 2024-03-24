@@ -3,6 +3,7 @@
 <img src="/public/icons/FSD.svg" alt="FSD" width="300" />
 
 [![React](https://img.shields.io/badge/React-18-blue?style=flat&logo=react&logoColor=white)](#)
+[![RTK](https://img.shields.io/badge/Redux-Toolkit-purple?style=flat&logo=redux&logoColor=white)](#)
 [![TypeScript](https://img.shields.io/badge/TypeScript-blue?style=flat&logo=typescript&logoColor=white)](#)
 
 ## Описание
