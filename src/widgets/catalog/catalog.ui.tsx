@@ -10,7 +10,7 @@ import { CatalogProps } from './catalog.types';
 
 export const Catalog: React.FC<CatalogProps> = ({ className, sparse }) => {
   useResetCatalog();
-  const { products, hasMore, isFetching } = useCatalog();
+  const { products, hasMore, isFetching, isValid } = useCatalog();
 
   const dispatch = useAppDispatch();
   const showMoreProducts = () => {
@@ -23,7 +23,7 @@ export const Catalog: React.FC<CatalogProps> = ({ className, sparse }) => {
 
   return (
     <div className={`${css.catalog} ${className}`}>
-      <ProductList products={products} sparse={sparse} />
+      {isValid && <ProductList products={products} sparse={sparse} />}
       <Preloader isFetching={isFetching} />
       {hasMore && (
         <ShowMore className={btnShowClasses} onClick={showMoreProducts} />

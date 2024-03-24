@@ -20,40 +20,45 @@ export const useResetCatalog = () => {
 };
 
 export const useCatalog = () => {
-  const { category, search, skip, hasMore, isFetching } = useCatalogParams();
+  const { category, search, skip, hasMore } = useCatalogParams();
 
-  useProductsQuery(skip);
+  const isFetching = useProductsQuery(skip);
   const products = useAppSelector(store =>
     selectProducts(store, category, search),
   );
 
-  return { products, hasMore, isFetching };
+  return {
+    products,
+    hasMore,
+    isFetching,
+    isValid: !(skip === 0 && isFetching),
+  };
 };
 
 export const useCatalogParams = () => {
-  const { skip, hasMore, isFetching } = useAppSelector(store => store.catalog);
+  const { skip, hasMore } = useAppSelector(store => store.catalog);
 
   const [searchParams] = useSearchParams();
   const category = searchParams.get('category');
   const search = searchParams.get('search');
 
-  return { category, search, skip, hasMore, isFetching };
+  return { category, search, skip, hasMore };
 };
 
-const useProductsQuery = (skip: number): void => {
+const useProductsQuery = (skip: number) => {
   const { category, search, hasMore } = useCatalogParams();
 
   const skipAll = !!category || !!search;
   const skipByCategory = !category || !!search;
   const skipBySearch = !search || !!category;
 
-  const { data } = useGetProductsQuery({ skip }, { skip: skipAll });
-  const { data: dataByCategory } = useGetProductsByCategoryQuery(
-    skipByCategory ? skipToken : { skip, category },
-  );
-  const { data: dataBySearch } = useSearchProductsQuery(
-    skipBySearch ? skipToken : { skip, search },
-  );
+  const { data, isFetching } = useGetProductsQuery({ skip }, { skip: skipAll });
+  const { data: dataByCategory, isFetching: isFetchingByCategory } =
+    useGetProductsByCategoryQuery(
+      skipByCategory ? skipToken : { skip, category },
+    );
+  const { data: dataBySearch, isFetching: isFetchingBySearch } =
+    useSearchProductsQuery(skipBySearch ? skipToken : { skip, search });
 
   /**
    * Sync data between the RTK Query cache and the Redux store
@@ -71,4 +76,6 @@ const useProductsQuery = (skip: number): void => {
   useEffect(() => {
     if (hasMore !== hasMoreCached) dispatch(toggleHasMore());
   }, [dispatch, hasMore, hasMoreCached]);
+
+  return isFetching || isFetchingByCategory || isFetchingBySearch;
 };
