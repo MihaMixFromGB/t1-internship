@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
+import { Page404 } from '@/pages/404';
 import { Admin } from '@/pages/admin';
 import { HomePage } from '@/pages/home-page';
 import { Layout } from '@/pages/layouts';
@@ -25,6 +26,7 @@ export const Router = () => {
           </Layout>
         }
       />
+      <Route path='*' element={<Page404 />} />
     </Routes>
   );
 };
