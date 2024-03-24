@@ -19,7 +19,7 @@ export const Link: React.FC<LinkProps> = ({
 
   const scrollWithOffset = (el: HTMLElement) => {
     const yCoordinate = el.getBoundingClientRect().top + window.scrollY;
-    const yOffset = -80;
+    const yOffset = window.scrollY === 0 ? -140 : -80;
     window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' });
   };
 
