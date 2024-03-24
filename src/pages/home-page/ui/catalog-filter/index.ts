@@ -1,1 +1,1 @@
-export { CatalogWithFilter } from './catalog.filter';
+export { CatalogWithFilter } from './catalog-filter';
