@@ -52,7 +52,10 @@ const useProductsQuery = (skip: number) => {
   const skipByCategory = !category || !!search;
   const skipBySearch = !search || !!category;
 
-  const { data, isFetching } = useGetProductsQuery({ skip }, { skip: skipAll });
+  const { data, isFetching } = useGetProductsQuery(
+    { skip },
+    { skip: skipAll, refetchOnMountOrArgChange: true },
+  );
   const { data: dataByCategory, isFetching: isFetchingByCategory } =
     useGetProductsByCategoryQuery(
       skipByCategory ? skipToken : { skip, category },
