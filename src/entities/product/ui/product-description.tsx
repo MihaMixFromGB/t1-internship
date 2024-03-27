@@ -1,6 +1,7 @@
-import { Heading, Paragraph } from '@/shared/ui';
+import { Heading } from '@/shared/ui';
 import { ProductDescriptionProps } from '../product.types';
 import css from './product-description.module.css';
+import { ProductProp } from './product-prop';
 import { ProductRating } from './product-rating';
 
 export const ProductDescription: React.FC<ProductDescriptionProps> = ({
@@ -39,19 +40,6 @@ export const ProductDescription: React.FC<ProductDescriptionProps> = ({
         <ProductProp name='Category' value={category} />
         <ProductProp name='Description' value={description} />
       </div>
-    </div>
-  );
-};
-
-type ProductPropProps = {
-  name: string;
-  value: string | number;
-};
-const ProductProp: React.FC<ProductPropProps> = ({ name, value }) => {
-  return (
-    <div className={css.product__prop}>
-      <Paragraph color='muted'>{name}</Paragraph>
-      <Paragraph>{value}</Paragraph>
     </div>
   );
 };

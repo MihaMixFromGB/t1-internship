@@ -55,6 +55,11 @@ export type ProductListProps = PropsWithClassName & {
   sparse?: boolean;
 };
 
+export type ProductPropProps = PropsWithClassName & {
+  name: string;
+  value: string | number;
+};
+
 export type ProductDescriptionProps = {
   product: Product;
 };
