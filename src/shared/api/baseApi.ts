@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const baseUrl = 'https://dummyjson.com';
 
-export const baseProductsApi = createApi({
+export const productsApi = createApi({
   reducerPath: 'productsApi',
   baseQuery: fetchBaseQuery({ baseUrl: `${baseUrl}/products` }),
   tagTypes: ['Products'],
@@ -13,7 +13,7 @@ export const baseProductsApi = createApi({
   }),
 });
 
-export const { useGetCategoriesQuery } = baseProductsApi;
+export const { useGetCategoriesQuery } = productsApi;
 export const {
   endpoints: { getCategories },
-} = baseProductsApi;
+} = productsApi;

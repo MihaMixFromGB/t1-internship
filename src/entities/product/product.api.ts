@@ -1,4 +1,4 @@
-import { baseProductsApi } from '@/shared/api';
+import { productsApi } from '@/shared/api';
 import { api } from '@/shared/config';
 import {
   transformSearchProductsResponse,
@@ -21,7 +21,7 @@ function getBaseParamsForProductsQuery(skip: number): URLSearchParams {
   });
 }
 
-export const productsApi = baseProductsApi.injectEndpoints({
+export const baseProductsApi = productsApi.injectEndpoints({
   endpoints: builder => ({
     getProducts: builder.query<ProductsResponse, GetProductsRequest>({
       query: ({ skip = 0 }) => ({
@@ -61,7 +61,7 @@ export const customProductsApi = baseProductsApi.injectEndpoints({
           const promises = categories.map(
             async category =>
               await dispatch(
-                productsApi.endpoints.getProductsByCategory.initiate({
+                baseProductsApi.endpoints.getProductsByCategory.initiate({
                   category,
                 }),
               ),
@@ -87,10 +87,10 @@ export const {
   useGetProductQuery,
   useGetProductsByCategoryQuery,
   useSearchProductsQuery,
-} = productsApi;
+} = baseProductsApi;
 
 export const { useGetProductsByCategoriesQuery } = customProductsApi;
 
 export const {
   endpoints: { getProducts, getProductsByCategory, searchProducts },
-} = productsApi;
+} = baseProductsApi;
