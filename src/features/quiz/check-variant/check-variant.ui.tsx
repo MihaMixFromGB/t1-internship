@@ -5,5 +5,12 @@ export const CheckVariant: React.FC<CheckVariantProps> = ({
   variant,
   onChange,
 }) => {
-  return <Checkbox name='quiz' value={variant.label} onChange={onChange} />;
+  return (
+    <Checkbox
+      name='quiz'
+      value={variant.label}
+      checked={variant.status}
+      onChange={onChange}
+    />
+  );
 };

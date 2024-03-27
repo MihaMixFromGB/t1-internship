@@ -6,10 +6,15 @@ import css from './product-list.module.css';
 export const ProductList: React.FC<ProductListProps> = ({
   products,
   sparse,
+  className,
 }) => {
-  const classes = clsx(css.container, {
-    [css.container_sparse]: sparse,
-  });
+  const classes = clsx(
+    css.container,
+    {
+      [css.container_sparse]: sparse,
+    },
+    className,
+  );
 
   return (
     <div className={classes}>

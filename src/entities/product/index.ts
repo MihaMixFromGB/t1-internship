@@ -4,6 +4,7 @@ export {
   useGetProductsByCategoryQuery,
   useSearchProductsQuery,
   useGetProductQuery,
+  useGetProductsByCategoriesQuery,
   getProducts,
   getProductsByCategory,
   searchProducts,

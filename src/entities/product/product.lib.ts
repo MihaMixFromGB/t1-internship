@@ -1,3 +1,4 @@
+import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 import {
   ApiShortInfo,
   ShortInfo,
@@ -23,4 +24,21 @@ function transformShortInfo(
   search: string,
 ): ShortInfo[] {
   return products.map(p => ({ ...p, searchTag: search }));
+}
+
+export function transformApiError(error: unknown): FetchBaseQueryError {
+  if (
+    typeof error === 'object' &&
+    error !== null &&
+    'status' in error &&
+    (typeof error.status === 'number' ||
+      error.status === 'FETCH_ERROR' ||
+      error.status === 'PARSING_ERROR')
+  ) {
+    return error as FetchBaseQueryError;
+  }
+  return {
+    status: 'CUSTOM_ERROR',
+    error: 'Unknown error by requesting top products',
+  };
 }

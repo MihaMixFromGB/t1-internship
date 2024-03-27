@@ -5,7 +5,7 @@ import { useAppDispatch } from '@/shared/lib';
 import { Paragraph, Preloader } from '@/shared/ui';
 import css from './quiz.module.css';
 
-export const QuizQuestion: React.FC = () => {
+export const QuizRequest: React.FC = () => {
   const quiz = useQuiz();
   const { isFetching } = useGetCategoriesQuery();
   const dispatch = useAppDispatch();
@@ -15,8 +15,8 @@ export const QuizQuestion: React.FC = () => {
       <Preloader isFetching={isFetching}>
         <Paragraph className={css.quiz__question}>{quiz.question}</Paragraph>
         <ul className={css.quiz__question__grid}>
-          {quiz.variants.map((variant, idx) => (
-            <li key={`${variant.label}-${idx}`}>
+          {quiz.variants.map(variant => (
+            <li key={variant.label}>
               <CheckVariant
                 variant={variant}
                 onChange={() => {

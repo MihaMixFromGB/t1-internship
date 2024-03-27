@@ -1,3 +1,5 @@
+import { PropsWithClassName } from '@/shared/model';
+
 export type Product = {
   id: number;
   skuid: number;
@@ -15,7 +17,7 @@ export type Product = {
 
 export type ApiShortInfo = Pick<
   Product,
-  'id' | 'title' | 'price' | 'thumbnail' | 'category'
+  'id' | 'title' | 'price' | 'thumbnail' | 'category' | 'rating'
 >;
 
 export type ShortInfo = ApiShortInfo & {
@@ -23,7 +25,7 @@ export type ShortInfo = ApiShortInfo & {
 };
 
 type BaseProductsRequest = {
-  skip: number;
+  skip?: number;
 };
 export type GetProductsRequest = BaseProductsRequest;
 export type GetProductsByCategoryRequest = BaseProductsRequest & {
@@ -48,7 +50,7 @@ export type ProductCardProps = {
   info: ShortInfo;
 };
 
-export type ProductListProps = {
+export type ProductListProps = PropsWithClassName & {
   products: ShortInfo[];
   sparse?: boolean;
 };

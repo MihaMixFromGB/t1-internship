@@ -1,19 +1,23 @@
+import clsx from 'clsx';
+import { quiz } from '@/shared/config';
 import { Heading, Paragraph } from '@/shared/ui';
+import { QuizHeaderProps } from '../quiz.types';
 import css from './quiz.module.css';
 
-export const QuizHeader: React.FC = () => {
+export const QuizHeader: React.FC<QuizHeaderProps> = ({ page }) => {
+  const { title, description } = quiz[page - 1];
+
+  const titleClasses = clsx(css.quiz__title, {
+    [css.quiz__title_single]: !description,
+  });
+
   return (
     <>
       <Heading className='visually-hidden' tag='h2'>
         Quiz
       </Heading>
-      <Paragraph className={css.quiz__title}>
-        We will select the perfect product for you
-      </Paragraph>
-      <Paragraph color='low-muted'>
-        Answer three questions and we will send you a catalog with the most
-        suitable products for you.
-      </Paragraph>
+      <Paragraph className={titleClasses}>{title}</Paragraph>
+      <Paragraph color='low-muted'>{description}</Paragraph>
     </>
   );
 };
