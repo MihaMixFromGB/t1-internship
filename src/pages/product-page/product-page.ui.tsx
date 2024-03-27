@@ -1,9 +1,12 @@
+import { useState } from 'react';
+import { EditProductForm } from '@/features/product/edit';
 import { ProductDescription } from '@/entities/product';
 import { Container, Wrapper, Heading, Slider, Preloader } from '@/shared/ui';
 import { useProduct } from './product-page.hooks';
 import css from './product-page.module.css';
 
 export const ProductPage: React.FC = () => {
+  const [isEdit] = useState(true);
   const { data: product, isFetching } = useProduct();
 
   return (
@@ -17,7 +20,11 @@ export const ProductPage: React.FC = () => {
               <Heading tag='h2'>{product.title}</Heading>
               <div className={css.product__content}>
                 <Slider images={product.images} />
-                <ProductDescription product={product} />
+                {isEdit ? (
+                  <EditProductForm product={product} />
+                ) : (
+                  <ProductDescription product={product} />
+                )}
               </div>
             </>
           )}

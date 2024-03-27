@@ -5,6 +5,7 @@ import {
   ApiProductsResponse,
   ProductsResponse,
   SearchProductsRequest,
+  CalcDiscountPriceArgs,
 } from './product.types';
 
 export function transformSearchProductsResponse(
@@ -41,4 +42,11 @@ export function transformApiError(error: unknown): FetchBaseQueryError {
     status: 'CUSTOM_ERROR',
     error: 'Unknown error by requesting top products',
   };
+}
+
+export function calcDiscountPrice({
+  basePrice,
+  discountPercentage,
+}: CalcDiscountPriceArgs) {
+  return Math.ceil(basePrice * (1 - discountPercentage / 100));
 }

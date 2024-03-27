@@ -60,6 +60,17 @@ export type ProductPropProps = PropsWithClassName & {
   value: string | number;
 };
 
+export type ProductDescriptionLayoutProps = React.PropsWithChildren & {
+  id: Product['id'];
+  title: Product['title'];
+  rating: Product['rating'];
+};
+
 export type ProductDescriptionProps = {
   product: Product;
+};
+
+export type CalcDiscountPriceArgs = {
+  basePrice: number;
+  discountPercentage: number;
 };

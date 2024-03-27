@@ -1,0 +1,39 @@
+.editForm {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.input {
+  display: grid;
+  grid-template-columns: 3fr 5fr;
+  align-items: center;
+  gap: 0;
+}
+
+.input__label {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+.input__value {
+  padding: 19px 6px;
+  color: var(--btn-background-secondary);
+  background-color: #f6f6f6;
+  border: none;
+}
+.input__value::-webkit-outer-spin-button,
+.input__value::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.input__value[type='number'] {
+  -moz-appearance: textfield;
+}
+
+.input__error {
+  font-size: 0.9rem;
+  color: red;
+}
