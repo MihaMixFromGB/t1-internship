@@ -4,7 +4,7 @@ import { getTopProductsByRating } from './quiz.lib';
 
 export const useTopProducts = () => {
   const categories = useSelectedCategories();
-  const { data } = useGetProductsByCategoriesQuery({ categories });
+  const { data, isFetching } = useGetProductsByCategoriesQuery({ categories });
 
-  return data ? getTopProductsByRating(data) : [];
+  return { products: data ? getTopProductsByRating(data) : [], isFetching };
 };
