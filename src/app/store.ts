@@ -1,7 +1,7 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { catalogSlice } from '@/widgets/catalog';
 import { quizSlice } from '@/entities/quiz';
-import { productsApi } from '@/shared/api';
+import { productsApi, rtkQueryErrorLogger } from '@/shared/api';
 
 const rootReducer = combineReducers({
   [productsApi.reducerPath]: productsApi.reducer,
@@ -12,7 +12,7 @@ const rootReducer = combineReducers({
 export const store = configureStore({
   reducer: rootReducer,
   middleware: getDefaultMiddleware =>
-    getDefaultMiddleware().concat(productsApi.middleware),
+    getDefaultMiddleware().concat(productsApi.middleware, rtkQueryErrorLogger),
 });
 
 export type AppDispatch = typeof store.dispatch;
