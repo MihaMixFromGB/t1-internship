@@ -2,6 +2,7 @@ import { Product } from '@/entities/product';
 
 export type EditProductProps = {
   product: Product;
+  onPostSubmit?: () => void;
 };
 
 export type Inputs = Pick<
@@ -18,4 +19,11 @@ export type InputProps = {
   name: keyof Inputs;
   label: string;
   value: string | number;
+  min?: number;
+  max?: number;
+};
+
+export type CalcDiscountPriceArgs = {
+  basePrice: number;
+  discountPercentage: number;
 };

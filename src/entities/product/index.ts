@@ -5,6 +5,7 @@ export {
   useSearchProductsQuery,
   useGetProductQuery,
   useGetProductsByCategoriesQuery,
+  useUpdateProductMutation,
   getProducts,
   getProductsByCategory,
   searchProducts,

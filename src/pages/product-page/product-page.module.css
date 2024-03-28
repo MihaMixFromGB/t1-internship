@@ -9,6 +9,10 @@
   margin-top: 55px;
 }
 
+.editButton {
+  margin-top: 66px;
+}
+
 @media only screen and (max-width: 768px) {
   .product {
     padding-top: 20px;

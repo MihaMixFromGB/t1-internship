@@ -35,6 +35,9 @@ export type SearchProductsRequest = BaseProductsRequest & {
   search: string;
 };
 
+export type UpdateProductRequest = Pick<Product, 'id'> &
+  Partial<Omit<Product, 'id'>>;
+
 export type ApiProductsResponse = {
   products: ApiShortInfo[];
   total: number;

@@ -3,15 +3,27 @@ import {
   ProductDescriptionLayout,
   ProductProp,
   calcDiscountPrice,
+  useUpdateProductMutation,
 } from '@/entities/product';
 import { EditProductProps, Inputs } from '../edit.types';
+import { EditButton } from './edit-button';
 import { Input } from './edit-input';
 import css from './edit.module.css';
 
-export const EditProductForm: React.FC<EditProductProps> = ({ product }) => {
+export const EditProductForm: React.FC<EditProductProps> = ({
+  product,
+  onPostSubmit,
+}) => {
   const methods = useForm<Inputs>();
-  const { handleSubmit } = methods;
-  const onSubmit: SubmitHandler<Inputs> = data => console.log(data);
+  const { handleSubmit, watch } = methods;
+
+  const [updateProduct] = useUpdateProductMutation();
+
+  const onSubmit: SubmitHandler<Inputs> = async data => {
+    console.log(data);
+    await updateProduct({ id, ...data }).unwrap();
+    if (onPostSubmit) onPostSubmit();
+  };
 
   const {
     id,
@@ -26,8 +38,8 @@ export const EditProductForm: React.FC<EditProductProps> = ({ product }) => {
   } = product;
 
   const discountPrice = calcDiscountPrice({
-    basePrice: price,
-    discountPercentage,
+    basePrice: watch('price') ?? price,
+    discountPercentage: watch('discountPercentage') ?? discountPercentage,
   });
 
   return (
@@ -39,6 +51,7 @@ export const EditProductForm: React.FC<EditProductProps> = ({ product }) => {
             name='discountPercentage'
             label='Discount Percentage'
             value={discountPercentage}
+            max={100}
           />
           <ProductProp
             className={css.input}
@@ -49,7 +62,7 @@ export const EditProductForm: React.FC<EditProductProps> = ({ product }) => {
           <Input name='brand' label='Brand' value={brand} />
           <Input name='category' label='Category' value={category} />
           <Input name='description' label='Description' value={description} />
-          <input type='submit' value='Save' />
+          <EditButton type='submit'>Save</EditButton>
         </form>
       </FormProvider>
     </ProductDescriptionLayout>

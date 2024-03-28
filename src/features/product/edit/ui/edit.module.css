@@ -5,6 +5,10 @@
   width: 100%;
 }
 
+.editForm > .editButton {
+  margin-top: 24px;
+}
+
 .input {
   display: grid;
   grid-template-columns: 3fr 5fr;
@@ -36,4 +40,10 @@
 .input__error {
   font-size: 0.9rem;
   color: red;
+}
+
+.editButton {
+  width: 300px;
+  padding-left: 0;
+  padding-right: 0;
 }

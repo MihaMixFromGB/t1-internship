@@ -10,6 +10,7 @@ import {
   GetProductsRequest,
   GetProductsByCategoryRequest,
   SearchProductsRequest,
+  UpdateProductRequest,
   ProductsResponse,
 } from './product.types';
 
@@ -46,6 +47,21 @@ export const baseProductsApi = productsApi.injectEndpoints({
         url: `/search?q=${search}&${getBaseParamsForProductsQuery(skip)}`,
       }),
       transformResponse: transformSearchProductsResponse,
+    }),
+    updateProduct: builder.mutation<void, UpdateProductRequest>({
+      query: ({ id, ...body }) => ({
+        url: `/${id}`,
+        method: 'PUT',
+        body,
+      }),
+      async onQueryStarted({ id, ...patch }, { dispatch, queryFulfilled }) {
+        const updateProductResult = dispatch(
+          baseProductsApi.util.updateQueryData('getProduct', id, draft => {
+            Object.assign(draft, patch);
+          }),
+        );
+        queryFulfilled.catch(updateProductResult.undo);
+      },
     }),
   }),
 });
@@ -87,6 +103,7 @@ export const {
   useGetProductQuery,
   useGetProductsByCategoryQuery,
   useSearchProductsQuery,
+  useUpdateProductMutation,
 } = baseProductsApi;
 
 export const { useGetProductsByCategoriesQuery } = customProductsApi;
