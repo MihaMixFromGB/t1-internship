@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useForm, FormProvider, SubmitHandler } from 'react-hook-form';
 import {
   ProductDescriptionLayout,
@@ -7,6 +8,7 @@ import {
 } from '@/entities/product';
 import { EditProductProps, Inputs } from '../edit.types';
 import { EditButton } from './edit-button';
+import { CategoriesSelector } from './edit-category';
 import { Input } from './edit-input';
 import css from './edit.module.css';
 
@@ -14,8 +16,12 @@ export const EditProductForm: React.FC<EditProductProps> = ({
   product,
   onPostSubmit,
 }) => {
-  const methods = useForm<Inputs>();
-  const { handleSubmit, watch } = methods;
+  const methods = useForm<Inputs>({
+    defaultValues: {
+      category: product.category,
+    },
+  });
+  const { handleSubmit, watch, resetField } = methods;
 
   const [updateProduct] = useUpdateProductMutation();
 
@@ -36,6 +42,16 @@ export const EditProductForm: React.FC<EditProductProps> = ({
     category,
     description,
   } = product;
+
+  /**
+   * This is not good but I don't find out other way to set a default value of the select.
+   * The problem is appeared when options are created dynamically.
+   */
+  useEffect(() => {
+    setTimeout(() => {
+      resetField('category');
+    }, 1000);
+  }, [category, resetField]);
 
   const discountPrice = calcDiscountPrice({
     basePrice: watch('price') ?? price,
@@ -60,7 +76,7 @@ export const EditProductForm: React.FC<EditProductProps> = ({
           />
           <Input name='stock' label='Stock' value={stock} />
           <Input name='brand' label='Brand' value={brand} />
-          <Input name='category' label='Category' value={category} />
+          <CategoriesSelector category={category} />
           <Input name='description' label='Description' value={description} />
           <EditButton type='submit'>Save</EditButton>
         </form>

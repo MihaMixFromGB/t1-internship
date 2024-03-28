@@ -27,6 +27,9 @@
   color: var(--btn-background-secondary);
   background-color: #f6f6f6;
   border: none;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
 }
 .input__value::-webkit-outer-spin-button,
 .input__value::-webkit-inner-spin-button {
@@ -46,4 +49,19 @@
   width: 300px;
   padding-left: 0;
   padding-right: 0;
+}
+
+.edit__selectorWrapper {
+  width: 100%;
+  cursor: pointer;
+  background-color: #fff;
+  background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+}
+
+.edit__selector {
+  appearance: none;
+  margin: 0;
+  width: 100%;
+  cursor: inherit;
+  outline: none;
 }
