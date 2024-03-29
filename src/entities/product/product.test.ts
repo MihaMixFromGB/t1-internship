@@ -1,6 +1,6 @@
 import { calcDiscountPrice } from './product.lib';
 
-describe('computed props', () => {
+describe('computed props of products', () => {
   it('a discont price is 100$', () => {
     const basePrice = 200;
     const discountPercentage = 50;

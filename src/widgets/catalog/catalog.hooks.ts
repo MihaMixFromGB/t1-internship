@@ -46,7 +46,10 @@ export const useCatalogParams = () => {
 };
 
 const useProductsQuery = (skip: number) => {
-  const { category, search, hasMore } = useCatalogParams();
+  // const { category, search, hasMore } = useCatalogParams();
+  const category = undefined;
+  const search = undefined;
+  const hasMore = false;
 
   const skipAll = !!category || !!search;
   const skipByCategory = !category || !!search;
