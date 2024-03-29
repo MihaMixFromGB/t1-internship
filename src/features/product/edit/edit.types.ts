@@ -23,7 +23,7 @@ export type InputProps = {
   max?: number;
 };
 
-export type CalcDiscountPriceArgs = {
-  basePrice: number;
-  discountPercentage: number;
+export type SelectProps = {
+  name: keyof Inputs;
+  values: string[];
 };

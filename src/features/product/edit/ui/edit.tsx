@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useForm, FormProvider, SubmitHandler } from 'react-hook-form';
 import {
   ProductDescriptionLayout,
@@ -6,10 +5,12 @@ import {
   calcDiscountPrice,
   useUpdateProductMutation,
 } from '@/entities/product';
+import { useCategories } from '@/entities/tag';
+import { Preloader } from '@/shared/ui';
 import { EditProductProps, Inputs } from '../edit.types';
 import { EditButton } from './edit-button';
-import { CategoriesSelector } from './edit-category';
 import { Input } from './edit-input';
+import { Select } from './edit-select';
 import css from './edit.module.css';
 
 export const EditProductForm: React.FC<EditProductProps> = ({
@@ -21,12 +22,11 @@ export const EditProductForm: React.FC<EditProductProps> = ({
       category: product.category,
     },
   });
-  const { handleSubmit, watch, resetField } = methods;
+  const { handleSubmit, watch } = methods;
 
   const [updateProduct] = useUpdateProductMutation();
 
   const onSubmit: SubmitHandler<Inputs> = async data => {
-    console.log(data);
     await updateProduct({ id, ...data }).unwrap();
     if (onPostSubmit) onPostSubmit();
   };
@@ -39,19 +39,10 @@ export const EditProductForm: React.FC<EditProductProps> = ({
     discountPercentage,
     stock,
     brand,
-    category,
     description,
   } = product;
 
-  /**
-   * This is not good but I don't find out other way to set a default value of the select.
-   * The problem is appeared when options are created dynamically.
-   */
-  useEffect(() => {
-    setTimeout(() => {
-      resetField('category');
-    }, 1000);
-  }, [category, resetField]);
+  const { data: categories, isFetching } = useCategories();
 
   const discountPrice = calcDiscountPrice({
     basePrice: watch('price') ?? price,
@@ -76,7 +67,9 @@ export const EditProductForm: React.FC<EditProductProps> = ({
           />
           <Input name='stock' label='Stock' value={stock} />
           <Input name='brand' label='Brand' value={brand} />
-          <CategoriesSelector category={category} />
+          <Preloader isFetching={isFetching}>
+            <Select name='category' values={categories} />
+          </Preloader>
           <Input name='description' label='Description' value={description} />
           <EditButton type='submit'>Save</EditButton>
         </form>

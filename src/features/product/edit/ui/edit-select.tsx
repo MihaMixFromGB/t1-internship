@@ -1,25 +1,24 @@
 import { useFormContext } from 'react-hook-form';
-import { useCategories } from '@/entities/tag';
+import { SelectProps } from '../edit.types';
 import css from './edit.module.css';
 
-export const CategoriesSelector: React.FC = () => {
-  const { data: categories } = useCategories();
+export const Select: React.FC<SelectProps> = ({ name, values }) => {
   const { register } = useFormContext();
 
   return (
     <div className={css.input}>
-      <label className={css.input__label} htmlFor='select-categories'>
+      <label className={css.input__label} htmlFor={`select-${name}`}>
         Category
       </label>
       <div className={css.edit__selectorWrapper}>
         <select
-          id='select-categories'
+          id={`select-${name}`}
           className={`${css.input__value} ${css.edit__selector}`}
-          {...register('category')}
+          {...register(name)}
         >
-          {categories.map(item => (
-            <option key={item} value={item}>
-              {item}
+          {values.map(value => (
+            <option key={value} value={value}>
+              {value}
             </option>
           ))}
         </select>
