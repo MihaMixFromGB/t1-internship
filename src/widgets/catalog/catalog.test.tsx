@@ -54,9 +54,7 @@ describe('hooks of the catalog', () => {
     const { result } = renderHook(() => useCatalog(), {
       wrapper: Wrapper,
     });
-    await waitFor(() =>
-      expect(result.current.products).toHaveLength(products.length),
-    );
+    await waitFor(() => expect(result.current.products).toHaveLength(9));
     expect(fetchMock).toHaveBeenCalledTimes(1);
   });
 
@@ -65,9 +63,10 @@ describe('hooks of the catalog', () => {
     const { result } = renderHook(() => useCatalog(), {
       wrapper: Wrapper,
     });
-    await waitFor(() =>
-      expect(result.current.products).toHaveLength(smartphones.length),
-    );
+    await waitFor(() => {
+      expect(result.current.products).toHaveLength(smartphones.length);
+      expect(result.current.products[0].category).toBe('smartphones');
+    });
     expect(fetchMock).toHaveBeenCalledTimes(1);
   });
 
@@ -76,9 +75,10 @@ describe('hooks of the catalog', () => {
     const { result } = renderHook(() => useCatalog(), {
       wrapper: Wrapper,
     });
-    await waitFor(() =>
-      expect(result.current.products).toHaveLength(searchMac.length),
-    );
+    await waitFor(() => {
+      expect(result.current.products).toHaveLength(searchMac.length);
+      expect(result.current.products[0].category).toBe('laptops');
+    });
     expect(fetchMock).toHaveBeenCalledTimes(1);
   });
 });
