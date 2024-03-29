@@ -169,10 +169,10 @@ const products = [
 ];
 
 const smartphones = products.filter(p => p.category === 'smartphones');
-const searchPhone = products.filter(p => p.title.includes('phone'));
+const searchMac = products.filter(p => p.title.includes('Mac'));
 
 export const productMocks = {
   products,
   smartphones,
-  searchPhone,
+  searchMac,
 };

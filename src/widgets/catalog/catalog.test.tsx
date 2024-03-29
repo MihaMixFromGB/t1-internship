@@ -6,15 +6,15 @@ import { store } from '@/app/store';
 import { productMocks } from '@/shared/api';
 import { useCatalog } from './catalog.hooks';
 
-function Wrapper(props: { children: ReactNode }) {
-  return (
+function getWrapper(path: string) {
+  return (props: { children: ReactNode }) => (
     <Provider store={store}>
-      <MemoryRouter>{props.children}</MemoryRouter>
+      <MemoryRouter initialEntries={[path]}>{props.children}</MemoryRouter>
     </Provider>
   );
 }
 
-const { products } = productMocks;
+const { products, smartphones, searchMac } = productMocks;
 
 describe('hooks of the catalog', () => {
   beforeAll(() => {
@@ -26,18 +26,58 @@ describe('hooks of the catalog', () => {
             products,
           }),
         });
+      } else if (/\/products\/category\/smartphones\?\S+skip=0/.test(req.url)) {
+        return Promise.resolve({
+          status: 200,
+          body: JSON.stringify({
+            products: smartphones,
+          }),
+        });
+      } else if (/\/products\/search\?q=Mac/.test(req.url)) {
+        return Promise.resolve({
+          status: 200,
+          body: JSON.stringify({
+            products: searchMac,
+          }),
+        });
       }
       return Promise.reject('bad url');
     });
   });
 
+  beforeEach(() => {
+    fetchMock.mockClear();
+  });
+
   it('get first nine products', async () => {
+    const Wrapper = getWrapper('');
     const { result } = renderHook(() => useCatalog(), {
       wrapper: Wrapper,
     });
-    await waitFor(() => expect(result.current.products).toHaveLength(0));
     await waitFor(() =>
       expect(result.current.products).toHaveLength(products.length),
+    );
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
+  it('get smartphones', async () => {
+    const Wrapper = getWrapper('?category=smartphones');
+    const { result } = renderHook(() => useCatalog(), {
+      wrapper: Wrapper,
+    });
+    await waitFor(() =>
+      expect(result.current.products).toHaveLength(smartphones.length),
+    );
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
+  it('get laptops (Mac)', async () => {
+    const Wrapper = getWrapper('?search=Mac');
+    const { result } = renderHook(() => useCatalog(), {
+      wrapper: Wrapper,
+    });
+    await waitFor(() =>
+      expect(result.current.products).toHaveLength(searchMac.length),
     );
     expect(fetchMock).toHaveBeenCalledTimes(1);
   });
