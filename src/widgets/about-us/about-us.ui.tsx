@@ -22,6 +22,9 @@ export const AboutUs: React.FC = () => {
           <Paragraph color='secondary'>
             But we will help you make the right choice!
           </Paragraph>
+          <Paragraph className={css.aboutUs__sign} color='secondary'>
+            Goods4you
+          </Paragraph>
         </div>
         <div className={css.aboutUs__image}></div>
       </Wrapper>

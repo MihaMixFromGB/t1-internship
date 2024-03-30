@@ -26,11 +26,15 @@ export const MainHeader: React.FC = () => {
             </Heading>
           </div>
           <div className={css.mainHeader__contentWrapper}>
+            <Paragraph className={css.mainHeader__subtitle} color='secondary'>
+              Any products from famous brands with worldwide delivery
+            </Paragraph>
             <Paragraph
               className={css.mainHeader__description}
               color='secondary'
             >
-              Any products from famous brands with worldwide delivery
+              We sell smartphones, laptops, clothes, shoes and many other
+              products at low prices
             </Paragraph>
             <Button className={css.mainHeader__btn}>Go to shopping</Button>
           </div>

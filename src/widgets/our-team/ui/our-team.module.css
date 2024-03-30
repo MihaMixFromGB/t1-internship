@@ -6,9 +6,16 @@
 }
 
 .ourTeamWrapper {
-  padding: 60px 0 140px;
+  padding-top: 60px;
+  padding-bottom: 140px;
 }
 
 .ourTeam__title {
   margin-bottom: 27px;
+}
+
+@media only screen and (max-width: 820px) {
+  .ourTeamWrapper {
+    padding-bottom: 60px;
+  }
 }

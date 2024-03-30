@@ -1,5 +1,6 @@
 .catalog {
-  padding: 54px 0;
+  padding-top: 54px;
+  padding-bottom: 54px;
 }
 
 .catalogWrapper {
@@ -12,4 +13,10 @@
 
 .catalog__filter {
   margin-right: 20px;
+}
+
+@media only screen and (max-width: 768px) {
+  .catalogWrapper {
+    flex-direction: column;
+  }
 }

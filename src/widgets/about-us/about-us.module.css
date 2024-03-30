@@ -13,11 +13,29 @@
 }
 
 .aboutUs__content {
+  display: flex;
+  flex-direction: column;
   width: 388px;
 }
 
 .aboutUs__header {
   margin-bottom: 10px;
+}
+
+.aboutUs__sign {
+  align-self: end;
+  margin-top: 42px;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+.aboutUs__sign::before {
+  position: relative;
+  top: 10px;
+  left: -50px;
+  display: block;
+  content: '';
+  width: 30px;
+  border-top: 3px solid var(--text-secondary);
 }
 
 .aboutUs__image {

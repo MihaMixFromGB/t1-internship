@@ -10,7 +10,7 @@ export const QuizResponse: React.FC = () => {
       {!products.length ? (
         <Paragraph>Oops... something went wrong, please try later</Paragraph>
       ) : (
-        <ProductList className={css.quiz__answer} products={products} />
+        <ProductList className={css.quiz__response} products={products} />
       )}
     </Preloader>
   );

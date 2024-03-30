@@ -11,10 +11,10 @@ export const QuizRequest: React.FC = () => {
   const dispatch = useAppDispatch();
 
   return (
-    <div className={css.quiz__questionWrapper}>
+    <div className={css.quiz__requestWrapper}>
       <Preloader isFetching={isFetching}>
-        <Paragraph className={css.quiz__question}>{quiz.question}</Paragraph>
-        <ul className={css.quiz__question__grid}>
+        <Paragraph className={css.quiz__request}>{quiz.question}</Paragraph>
+        <ul className={css.quiz__request__grid}>
           {quiz.variants.map(variant => (
             <li key={variant.label}>
               <CheckVariant
