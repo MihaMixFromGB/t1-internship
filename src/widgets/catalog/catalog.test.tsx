@@ -1,6 +1,6 @@
 import { renderHook, waitFor } from '@testing-library/react';
+import { getWrapperForTest } from '@/app/app.lib';
 import { productMocks } from '@/shared/api';
-import { getWrapperForTest } from '@/shared/lib';
 import { useCatalog } from './catalog.hooks';
 
 const { products, smartphones, searchMac } = productMocks;

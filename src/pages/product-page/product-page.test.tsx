@@ -1,8 +1,8 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import { Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import { getWrapperForTest } from '@/app/app.lib';
 import { ProductPage } from '@/pages/product-page';
-import { getWrapperForTest } from '@/shared/lib';
 
 const notification = 'Bad Request';
 
