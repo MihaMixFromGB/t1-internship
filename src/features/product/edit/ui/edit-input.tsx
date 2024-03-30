@@ -3,9 +3,10 @@ import { InputProps } from '../edit.types';
 import css from './edit.module.css';
 
 export const Input: React.FC<InputProps> = ({
+  type,
   name,
   label,
-  value,
+  step = 1,
   min = 0,
   max,
 }) => {
@@ -13,8 +14,6 @@ export const Input: React.FC<InputProps> = ({
     register,
     formState: { errors },
   } = useFormContext();
-
-  const type = typeof value === 'number' ? 'number' : 'text';
 
   return (
     <div>
@@ -25,7 +24,7 @@ export const Input: React.FC<InputProps> = ({
         <input
           className={css.input__value}
           type={type}
-          defaultValue={value}
+          step={step}
           {...register(name, {
             required: true,
             min,

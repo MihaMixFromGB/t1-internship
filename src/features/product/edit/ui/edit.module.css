@@ -22,7 +22,8 @@
   color: var(--text-muted);
 }
 
-.input__value {
+.input__value,
+.growWrapper::after {
   padding: 19px 6px;
   color: var(--btn-background-secondary);
   background-color: #f6f6f6;
@@ -51,17 +52,37 @@
   padding-right: 0;
 }
 
-.edit__selectorWrapper {
+.selectorWrapper {
   width: 100%;
   cursor: pointer;
   background-color: #fff;
   background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
 }
 
-.edit__selector {
+.selector {
   appearance: none;
   margin: 0;
   width: 100%;
   cursor: inherit;
   outline: none;
+}
+
+/* https://css-tricks.com/the-cleanest-trick-for-autogrowing-textareas/ */
+.growWrapper {
+  display: grid;
+}
+.growWrapper::after {
+  content: attr(data-replicated-value) ' ';
+  white-space: pre-wrap;
+  visibility: hidden;
+}
+
+.growWrapper > textarea {
+  resize: none;
+  overflow: hidden;
+}
+
+.growWrapper > textarea,
+.growWrapper::after {
+  grid-area: 1 / 1 / 2 / 2;
 }

@@ -15,15 +15,20 @@ export type Inputs = Pick<
   | 'description'
 >;
 
-export type InputProps = {
+export type BaseInputProps = {
   name: keyof Inputs;
   label: string;
-  value: string | number;
+};
+
+export type InputProps = BaseInputProps & {
+  type: 'text' | 'number';
+  step?: number;
   min?: number;
   max?: number;
 };
 
-export type SelectProps = {
-  name: keyof Inputs;
+export type SelectProps = BaseInputProps & {
   values: string[];
 };
+
+export type TextareaProps = BaseInputProps;
