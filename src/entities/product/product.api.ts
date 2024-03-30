@@ -28,11 +28,13 @@ export const baseProductsApi = productsApi.injectEndpoints({
       query: ({ skip = 0 }) => ({
         url: `?${getBaseParamsForProductsQuery(skip)}`,
       }),
+      transformErrorResponse: response => response.data,
     }),
     getProduct: builder.query<Product, Product['id']>({
       query: productId => ({
         url: `/${productId}`,
       }),
+      transformErrorResponse: response => response.data,
     }),
     getProductsByCategory: builder.query<
       ProductsResponse,
@@ -41,6 +43,7 @@ export const baseProductsApi = productsApi.injectEndpoints({
       query: ({ category, skip = 0 }) => ({
         url: `/category/${category}?${getBaseParamsForProductsQuery(skip)}`,
       }),
+      transformErrorResponse: response => response.data,
     }),
     searchProducts: builder.query<ProductsResponse, SearchProductsRequest>({
       query: ({ search, skip = 0 }) => ({
@@ -54,6 +57,7 @@ export const baseProductsApi = productsApi.injectEndpoints({
         method: 'PUT',
         body,
       }),
+      transformErrorResponse: response => response.data,
       async onQueryStarted({ id, ...patch }, { dispatch, queryFulfilled }) {
         const updateProductResult = dispatch(
           baseProductsApi.util.updateQueryData('getProduct', id, draft => {
