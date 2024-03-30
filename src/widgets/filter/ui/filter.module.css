@@ -9,6 +9,22 @@
   margin: 25px 0 2px;
 }
 
-.filter__apply {
-  margin: 32px 0 12px;
+.filter__toolbar {
+  display: flex;
+  flex-direction: column;
+  margin: 32px auto 0;
+  gap: 12px;
+  max-width: 240px;
+}
+
+@media only screen and (max-width: 768px) {
+  .filter {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .filter__toolbar {
+    max-width: inherit;
+  }
 }

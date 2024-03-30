@@ -12,7 +12,7 @@ export const CatalogWithFilter: React.FC = () => {
           Catalog
         </Heading>
         <div className={css.catalogWrapper}>
-          <Filter className={css.catalog__filter} />
+          <Filter />
           <Catalog />
         </div>
       </Wrapper>

@@ -33,3 +33,13 @@
   border-bottom-left-radius: var(--border-radius);
   border-bottom-right-radius: 0;
 }
+
+@media only screen and (max-width: 768px) {
+  .tags,
+  .tags > li:first-child,
+  .tags > li:nth-child(2),
+  .tags > li:last-child,
+  .tags > li:nth-last-child(2) {
+    border-radius: 0;
+  }
+}

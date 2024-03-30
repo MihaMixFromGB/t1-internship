@@ -50,8 +50,10 @@ export const Filter: React.FC<PropsWithClassName> = ({ className }) => {
       </Heading>
       <Paragraph className={css.filter__field}>Category</Paragraph>
       <TagList current={current} toggle={toggle} />
-      <ApplyTags className={css.filter__apply} onClick={apply} />
-      <ResetTags onClick={reset} />
+      <div className={css.filter__toolbar}>
+        <ApplyTags onClick={apply} />
+        <ResetTags onClick={reset} />
+      </div>
     </div>
   );
 };
