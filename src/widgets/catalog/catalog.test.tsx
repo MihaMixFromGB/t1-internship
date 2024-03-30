@@ -1,18 +1,7 @@
 import { renderHook, waitFor } from '@testing-library/react';
-import { ReactNode } from 'react';
-import { Provider } from 'react-redux';
-import { MemoryRouter } from 'react-router-dom';
-import { store } from '@/app/store';
 import { productMocks } from '@/shared/api';
+import { getWrapperForTest } from '@/shared/lib';
 import { useCatalog } from './catalog.hooks';
-
-function getWrapper(path: string) {
-  return (props: { children: ReactNode }) => (
-    <Provider store={store}>
-      <MemoryRouter initialEntries={[path]}>{props.children}</MemoryRouter>
-    </Provider>
-  );
-}
 
 const { products, smartphones, searchMac } = productMocks;
 
@@ -45,12 +34,12 @@ describe('hooks of the catalog', () => {
     });
   });
 
-  beforeEach(() => {
+  afterEach(() => {
     fetchMock.mockClear();
   });
 
   it('get first nine products', async () => {
-    const Wrapper = getWrapper('');
+    const Wrapper = getWrapperForTest('');
     const { result } = renderHook(() => useCatalog(), {
       wrapper: Wrapper,
     });
@@ -59,7 +48,7 @@ describe('hooks of the catalog', () => {
   });
 
   it('get smartphones', async () => {
-    const Wrapper = getWrapper('?category=smartphones');
+    const Wrapper = getWrapperForTest('?category=smartphones');
     const { result } = renderHook(() => useCatalog(), {
       wrapper: Wrapper,
     });
@@ -71,7 +60,7 @@ describe('hooks of the catalog', () => {
   });
 
   it('get laptops (Mac)', async () => {
-    const Wrapper = getWrapper('?search=Mac');
+    const Wrapper = getWrapperForTest('?search=Mac');
     const { result } = renderHook(() => useCatalog(), {
       wrapper: Wrapper,
     });
