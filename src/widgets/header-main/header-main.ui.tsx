@@ -12,7 +12,12 @@ import css from './header-main.module.css';
 export const MainHeader: React.FC = () => {
   return (
     <>
-      <Navbar className={css.mainHeader__navbar} fixed menu={navigationMenu} />
+      <Navbar
+        className={css.mainHeader__navbar}
+        fixed
+        menu={navigationMenu}
+        burger
+      />
       <Container className={css.mainHeader}>
         <Wrapper className={`${css.mainHeaderWrapper}`}>
           <hr className={css.mainHeader__hr} />

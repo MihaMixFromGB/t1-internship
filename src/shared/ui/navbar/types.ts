@@ -8,4 +8,5 @@ export type MenuItem = {
 export type NavbarProps = PropsWithClassName & {
   menu: MenuItem[];
   fixed?: boolean;
+  burger?: boolean;
 };

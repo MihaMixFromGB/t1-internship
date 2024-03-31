@@ -105,10 +105,10 @@
 }
 
 @media only screen and (max-width: 768px) {
-  .navbar__menu__buttonContainer {
+  .navbar__menu__buttonContainer[data-burger] {
     display: flex;
   }
-  .navbar__menu {
+  .navbar__menu[data-burger] {
     position: absolute;
     top: 60px;
     left: 0;
@@ -118,26 +118,26 @@
     justify-content: center;
     align-items: center;
   }
-  .navbar.fixed .navbar__menu {
+  .navbar.fixed .navbar__menu[data-burger] {
     top: 48px;
   }
-  #navbar__menu_toggle ~ .navbar__menu li {
+  #navbar__menu_toggle ~ .navbar__menu[data-burger] li {
     height: 0;
     margin: 0;
     padding: 0;
     border: 0;
     transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
   }
-  #navbar__menu_toggle:checked ~ .navbar__menu li {
+  #navbar__menu_toggle:checked ~ .navbar__menu[data-burger] li {
     border-bottom: 1px solid #fff;
     height: 2.5em;
     padding: 0.5em;
     transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
   }
-  #navbar__menu_toggle:checked ~ .navbar__menu li:first-child {
+  #navbar__menu_toggle:checked ~ .navbar__menu[data-burger] li:first-child {
     border-top: 1px solid #fff;
   }
-  .navbar__menu > li {
+  .navbar__menu[data-burger] > li {
     display: flex;
     justify-content: center;
     margin: 0;
@@ -145,7 +145,7 @@
     width: 100%;
     background-color: var(--bg-color);
   }
-  .navbar__menu > li:not(:last-child) {
+  .navbar__menu[data-burger] > li:not(:last-child) {
     border-bottom: 1px solid #444;
   }
 }

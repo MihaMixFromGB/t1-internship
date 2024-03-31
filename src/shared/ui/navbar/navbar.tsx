@@ -7,7 +7,12 @@ import { NavbarMenu } from './navbar-menu';
 import css from './navbar.module.css';
 import { NavbarProps } from './types';
 
-export const Navbar: React.FC<NavbarProps> = ({ fixed, menu, className }) => {
+export const Navbar: React.FC<NavbarProps> = ({
+  fixed,
+  menu,
+  burger,
+  className,
+}) => {
   const [isScroll, setScroll] = useState(false);
 
   useEffect(() => {
@@ -37,7 +42,7 @@ export const Navbar: React.FC<NavbarProps> = ({ fixed, menu, className }) => {
     <Container className={classes}>
       <Wrapper className={wrapperClasses}>
         <Logo />
-        {menu.length > 0 && <NavbarMenu menu={menu} />}
+        {menu.length > 0 && <NavbarMenu menu={menu} burger={burger} />}
       </Wrapper>
     </Container>
   );
