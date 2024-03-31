@@ -18,7 +18,7 @@ export const NavbarMenu: React.FC<Pick<NavbarProps, 'menu' | 'burger'>> = ({
       </label>
       <ul className={css.navbar__menu} data-burger={burger}>
         {menu.map(item => (
-          <li>
+          <li key={item.label}>
             <Link key={item.label} href={item.href}>
               {item.label}
             </Link>

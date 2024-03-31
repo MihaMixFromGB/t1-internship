@@ -6,7 +6,7 @@ import { useProduct } from './product-page.hooks';
 import css from './product-page.module.css';
 
 export const ProductPage: React.FC = () => {
-  const [isEdit, toggleEdit] = useState(false);
+  const [isEdit, toggleEdit] = useState(true);
   const { data: product, isFetching } = useProduct();
 
   return (

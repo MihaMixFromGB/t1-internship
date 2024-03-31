@@ -4,7 +4,9 @@
 }
 
 .product__content {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  justify-items: center;
   gap: 42px;
   margin-top: 55px;
 }
@@ -19,8 +21,6 @@
     padding-bottom: 40px;
   }
   .product__content {
-    flex-direction: column;
-    align-items: center;
     gap: 20px;
     margin-top: 20px;
   }
