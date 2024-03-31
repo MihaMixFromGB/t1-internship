@@ -11,13 +11,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({ info }) => {
         <img
           className={css.product__img}
           src={info.thumbnail}
-          alt=''
-          aria-hidden={true}
+          alt={info.title}
+          aria-hidden
         />
-        <Paragraph className={css.product__label} aria-hidden={true}>
+        <Paragraph className={css.product__label} aria-hidden>
           {info.title}
         </Paragraph>
-        <Paragraph lead aria-hidden={true}>
+        <Paragraph lead aria-hidden>
           {info.price}$
         </Paragraph>
       </article>

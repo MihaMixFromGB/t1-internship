@@ -56,7 +56,7 @@
 .item_open {
   padding-bottom: 40px;
 }
-.item_open > .item__header > .iconToggle {
+.item_open .iconToggle {
   transform: rotate(90deg);
 }
 .item_open > .item__body {

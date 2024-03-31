@@ -39,10 +39,10 @@
 }
 
 .aboutUs__image {
-  width: 680px;
-  height: 100%;
-  background-image: url(/images/bg/about_us_photo.png);
   clip-path: polygon(25% 0, 100% 0, 75% 100%, 0 100%);
+}
+.aboutUs__image img {
+  display: block;
 }
 
 @media only screen and (max-width: 1200px) {
