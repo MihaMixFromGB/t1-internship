@@ -19,7 +19,7 @@ const catalogAdapter = createEntityAdapter<ShortInfo>({
 });
 const initialState = catalogAdapter.getInitialState({
   skip: 0,
-  hasMore: true,
+  hasMore: false,
 });
 
 export const catalogSlice = createSlice({

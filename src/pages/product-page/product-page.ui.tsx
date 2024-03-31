@@ -14,7 +14,7 @@ export const ProductPage: React.FC = () => {
       <Wrapper>
         <Preloader isFetching={isFetching}>
           {!product ? (
-            <Heading tag='h2'>Товар не найден</Heading>
+            <Heading tag='h2'>A product was not found</Heading>
           ) : (
             <>
               <Heading tag='h2'>{product.title}</Heading>

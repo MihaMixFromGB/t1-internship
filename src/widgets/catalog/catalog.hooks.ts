@@ -52,6 +52,10 @@ const useProductsQuery = (skip: number) => {
   const skipByCategory = !category || !!search;
   const skipBySearch = !search || !!category;
 
+  /**
+   * refetchOnMountOrArgChange kills caching :(
+   * but it is the decision from tutors
+   */
   const { data, isFetching } = useGetProductsQuery(
     { skip },
     { skip: skipAll, refetchOnMountOrArgChange: true },
@@ -59,9 +63,12 @@ const useProductsQuery = (skip: number) => {
   const { data: dataByCategory, isFetching: isFetchingByCategory } =
     useGetProductsByCategoryQuery(
       skipByCategory ? skipToken : { skip, category },
+      { refetchOnMountOrArgChange: true },
     );
   const { data: dataBySearch, isFetching: isFetchingBySearch } =
-    useSearchProductsQuery(skipBySearch ? skipToken : { skip, search });
+    useSearchProductsQuery(skipBySearch ? skipToken : { skip, search }, {
+      refetchOnMountOrArgChange: true,
+    });
 
   /**
    * Sync data between the RTK Query cache and the Redux store
