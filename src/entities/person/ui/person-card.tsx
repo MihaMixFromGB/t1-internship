@@ -10,6 +10,7 @@ export const PersonCard: React.FC<PersonCardProps> = ({ person }) => {
         width={380}
         height={400}
         alt={`${person.name}, ${person.position}`}
+        loading='lazy'
       />
       <div className={css.info} aria-hidden={true}>
         <Paragraph className={css.info__name} color='secondary'>

@@ -3,3 +3,9 @@
   padding-top: 19px;
   padding-bottom: 19px;
 }
+
+@media only screen and (max-width: 768px) {
+  .footer nav {
+    display: none;
+  }
+}
