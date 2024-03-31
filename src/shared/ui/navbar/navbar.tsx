@@ -29,11 +29,15 @@ export const Navbar: React.FC<NavbarProps> = ({ fixed, menu, className }) => {
     className,
   );
 
+  const wrapperClasses = clsx(css.navbarWrapper, {
+    [css.center]: menu.length === 0,
+  });
+
   return (
     <Container className={classes}>
-      <Wrapper className={css.navbarWrapper}>
+      <Wrapper className={wrapperClasses}>
         <Logo />
-        <NavbarMenu menu={menu} />
+        {menu.length > 0 && <NavbarMenu menu={menu} />}
       </Wrapper>
     </Container>
   );
