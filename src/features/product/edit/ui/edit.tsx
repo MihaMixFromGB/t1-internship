@@ -1,4 +1,5 @@
 import { useForm, FormProvider, SubmitHandler } from 'react-hook-form';
+import { toast } from 'react-toastify';
 import {
   ProductDescriptionLayout,
   ProductProp,
@@ -51,8 +52,13 @@ export const EditProductForm: React.FC<EditProductProps> = ({
   const [updateProduct] = useUpdateProductMutation();
 
   const onSubmit: SubmitHandler<Inputs> = async data => {
-    await updateProduct({ id, ...data }).unwrap();
-    if (onPostSubmit) onPostSubmit();
+    try {
+      await updateProduct({ id, ...data }).unwrap();
+      toast.success("The product's info was successful updated!");
+      /* Error handling of API was made in the common middleware */
+    } finally {
+      if (onPostSubmit) onPostSubmit();
+    }
   };
 
   const { data: categories, isFetching } = useCategories();
