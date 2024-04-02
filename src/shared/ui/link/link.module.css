@@ -3,6 +3,16 @@
   font-size: 0.875rem;
 }
 
+.link_button {
+  width: max-content;
+  padding: 22px 47px;
+  color: var(--text-secondary);
+  background-color: var(--btn-background-primary);
+  border-radius: var(--border-radius);
+  font-weight: 400;
+  font-size: inherit;
+}
+
 .link_primary {
   color: var(--text-primary);
 }

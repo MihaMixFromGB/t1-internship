@@ -1,8 +1,8 @@
-import { navigationMenu } from '@/shared/model';
+import { navigationMenu, paths } from '@/shared/model';
 import {
   Container,
   Wrapper,
-  Button,
+  Link,
   Heading,
   Paragraph,
   Navbar,
@@ -41,7 +41,13 @@ export const MainHeader: React.FC = () => {
               We sell smartphones, laptops, clothes, shoes and many other
               products at low prices
             </Paragraph>
-            <Button className={css.mainHeader__btn}>Go to shopping</Button>
+            <Link
+              className={css.mainHeader__btn}
+              variant='button'
+              href={paths.catalog}
+            >
+              Go to shopping
+            </Link>
           </div>
         </Wrapper>
       </Container>

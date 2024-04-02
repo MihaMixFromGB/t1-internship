@@ -20,10 +20,6 @@
 
 .link {
   margin-top: 40px;
-  padding: 22px 47px;
-  color: var(--text-secondary);
-  background-color: var(--btn-background-primary);
-  border-radius: var(--border-radius);
 }
 
 @media only screen and (max-width: 768px) {

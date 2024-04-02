@@ -6,13 +6,15 @@ import { LinkProps } from './types';
 export const Link: React.FC<LinkProps> = ({
   href,
   color = 'secondary',
+  variant = 'link',
   children,
   className,
 }) => {
   const classes = clsx(
     css.link,
     {
-      [css[`link_${color}`]]: color,
+      [css[`link_${color}`]]: variant !== 'button' && color,
+      [css['link_button']]: variant === 'button',
     },
     className,
   );
