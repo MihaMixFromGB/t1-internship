@@ -1,9 +1,12 @@
 import { useState } from 'react';
+import ImageGallery from 'react-image-gallery';
 import { EditProductForm, EditButton } from '@/features/product/edit';
 import { ProductDescription } from '@/entities/product';
-import { Container, Wrapper, Heading, Slider, Preloader } from '@/shared/ui';
+import { Container, Wrapper, Heading, Preloader } from '@/shared/ui';
 import { useProduct } from './product-page.hooks';
 import css from './product-page.module.css';
+import { transformImagesToGallery } from './product.page-lib';
+import 'react-image-gallery/styles/css/image-gallery.css';
 
 export const ProductPage: React.FC = () => {
   const [isEdit, toggleEdit] = useState(false);
@@ -19,7 +22,9 @@ export const ProductPage: React.FC = () => {
             <>
               <Heading tag='h2'>{product.title}</Heading>
               <div className={css.product__content}>
-                <Slider images={product.images} />
+                <ImageGallery
+                  items={transformImagesToGallery(product.images)}
+                />
                 {isEdit ? (
                   <EditProductForm
                     product={product}
