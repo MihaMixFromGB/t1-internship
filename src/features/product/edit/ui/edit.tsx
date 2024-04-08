@@ -51,14 +51,12 @@ export const EditProductForm: React.FC<EditProductProps> = ({
 
   const [updateProduct] = useUpdateProductMutation();
 
-  const onSubmit: SubmitHandler<Inputs> = async data => {
-    try {
-      await updateProduct({ id, ...data }).unwrap();
+  const onSubmit: SubmitHandler<Inputs> = data => {
+    updateProduct({ id, ...data }).then(() => {
       toast.success("The product's info was successful updated!");
-      /* Error handling of API was made in the common middleware */
-    } finally {
-      if (onPostSubmit) onPostSubmit();
-    }
+    });
+    /* Error handling of API was made in the common middleware */
+    if (onPostSubmit) onPostSubmit();
   };
 
   const { data: categories, isFetching } = useCategories();
