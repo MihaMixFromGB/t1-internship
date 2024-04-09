@@ -19,6 +19,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
+    "esModuleInterop": true,
 
     /* Linting */
     "strict": true,
@@ -26,6 +27,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "types/vite-env.d.ts"],
+  "include": ["src", "types", "./jest.setup.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

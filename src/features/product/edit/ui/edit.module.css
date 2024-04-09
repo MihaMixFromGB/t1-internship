@@ -1,0 +1,105 @@
+.editForm {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.editForm > .editButton {
+  margin-top: 24px;
+}
+
+.input {
+  display: grid;
+  grid-template-columns: 3fr 5fr;
+  align-items: center;
+  gap: 0;
+}
+
+.input__label {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+.input__value,
+.growWrapper::after {
+  padding: 19px 6px;
+  color: var(--btn-background-secondary);
+  background-color: #f6f6f6;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+.input__value::-webkit-outer-spin-button,
+.input__value::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.input__value[type='number'] {
+  -moz-appearance: textfield;
+}
+
+.input__error {
+  font-size: 0.9rem;
+  color: red;
+}
+
+.editButton {
+  width: 300px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.selectorWrapper {
+  width: 100%;
+  cursor: pointer;
+  background-color: #fff;
+  background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+}
+
+.selector {
+  appearance: none;
+  margin: 0;
+  width: 100%;
+  cursor: inherit;
+  outline: none;
+}
+
+/* https://css-tricks.com/the-cleanest-trick-for-autogrowing-textareas/ */
+.growWrapper {
+  display: grid;
+}
+.growWrapper::after {
+  content: attr(data-replicated-value) ' ';
+  white-space: pre-wrap;
+  visibility: hidden;
+}
+
+.growWrapper > textarea {
+  resize: none;
+  overflow: hidden;
+}
+
+.growWrapper > textarea,
+.growWrapper::after {
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+@media only screen and (max-width: 576px) {
+  .input {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .editButton {
+    align-self: center;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .editButton {
+    width: 100%;
+  }
+}

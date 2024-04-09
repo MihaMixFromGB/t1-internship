@@ -1,0 +1,30 @@
+.search {
+  display: flex;
+  gap: 20px;
+}
+
+.search__input {
+  width: 100%;
+  padding: 19px 17px;
+  font-weight: 400;
+  font-size: 1rem;
+  background-color: #f6f6f6;
+  border: none;
+}
+.search__input::placeholder {
+  color: #b2b5bb;
+}
+
+.search__btn {
+  padding: 18px 47px;
+}
+
+@media only screen and (max-width: 576px) {
+  .search {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .search__btn {
+    width: 100%;
+  }
+}

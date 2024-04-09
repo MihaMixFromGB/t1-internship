@@ -1,0 +1,39 @@
+.collage {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  height: 920px;
+}
+
+.collage > li {
+  list-style-type: none;
+  flex-grow: 0;
+}
+.collage > li:nth-child(3) {
+  margin-top: 80px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .collage {
+    height: 1340px;
+  }
+  .collage > li:nth-child(3) {
+    margin-top: 0;
+  }
+  .collage > li:nth-child(4) {
+    margin-top: 80px;
+  }
+}
+
+@media only screen and (max-width: 820px) {
+  .collage {
+    height: min-content;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+  .collage > li:nth-child(4) {
+    margin-top: 0;
+  }
+}

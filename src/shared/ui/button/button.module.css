@@ -1,0 +1,42 @@
+.btn {
+  cursor: pointer;
+  width: max-content;
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 22px 47px;
+  font-size: 1rem;
+}
+
+.btn_primary {
+  color: var(--text-secondary);
+  background-color: var(--btn-background-primary);
+}
+
+.btn_secondary {
+  color: var(--text-secondary);
+  background-color: var(--btn-background-secondary);
+}
+
+.btn_outlined_primary {
+  border: var(--btn-outlined-width) solid var(--btn-outlined-primary);
+  color: var(--text-primary);
+  background-color: transparent;
+}
+
+.btn_outlined_secondary {
+  border: var(--btn-outlined-width) solid var(--btn-outlined-secondary);
+  color: var(--text-primary);
+  background-color: transparent;
+}
+
+.btn_light_primary {
+  border: none;
+  color: var(--text-primary);
+  background-color: transparent;
+}
+
+.btn_light_secondary {
+  border: none;
+  color: var(--text-secondary);
+  background-color: transparent;
+}
