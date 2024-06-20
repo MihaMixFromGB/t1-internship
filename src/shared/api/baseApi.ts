@@ -9,6 +9,8 @@ export const productsApi = createApi({
   endpoints: builder => ({
     getCategories: builder.query<string[], void>({
       query: () => ({ url: `/categories` }),
+      transformResponse: (response: { slug: string }[]) =>
+        response.map(item => item.slug),
       transformErrorResponse: response => response.data,
     }),
   }),
