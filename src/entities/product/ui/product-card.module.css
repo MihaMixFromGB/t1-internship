@@ -3,6 +3,7 @@
   height: 293px;
   object-fit: cover;
   border-radius: var(--border-radius);
+  background-color: #eeeeee;
 }
 
 .product__label {
